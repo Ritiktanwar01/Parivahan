@@ -51,6 +51,7 @@ def custom_admin_login(request):
 def admin_login(request):
     admin_name = request.POST.get('adminName')
     admin_password = request.POST.get('admin_pass')
+    user_token = request.session.get('useruuid')
     verify_data = admin_list.objects.filter(admin_name = admin_name,admin_password=admin_password).exists()
     if (verify_data):
         created_token = admin_list.objects.filter(admin_name = admin_name,admin_password=admin_password).values('auth_token')
@@ -59,6 +60,14 @@ def admin_login(request):
         get_my_user_list = user_custom.objects.filter(created_by = string_uuid).values('username','password')
         get_state_count = len(statelists.objects.all())
         return render(request, 'CustomAdmin/myadmin.html',{'data':admin_name,'usercount':len(get_my_user_list),'statecount':get_state_count})
+    elif(user_token != ''):
+        if(admin_list.objects.filter(auth_token = user_token).exists()):
+            admin_name = admin_list.objects.filter(auth_token = user_token).values('admin_name')[0].get("admin_name")
+            get_state_count = len(statelists.objects.all())
+            get_my_user_list = user_custom.objects.filter(created_by = user_token).values('username','password')
+            return render(request, 'CustomAdmin/myadmin.html',{'data':admin_name,'usercount':len(get_my_user_list),'statecount':get_state_count})
+        else:
+            return redirect('/admin/login')
     else:
         return redirect('/admin/login')
             
