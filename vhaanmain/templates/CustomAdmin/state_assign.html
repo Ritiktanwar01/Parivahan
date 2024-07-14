@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/static/myadmin/myadmin.css">
+    <link rel="stylesheet" href="/static/myadmin/myadmin_adduser.css">
+    <title>Admin</title>
+</head>
+<body onload="messegeHandler()">
+    <input type="hidden" name="" id="messege" value="{{messege}}">
+    <header>
+        <div class="brand">
+            <h3>Admin</h3>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li style="text-transform: uppercase;font-size:14px;">{{data}}</li>
+                <li><a href="logout" class="material-symbols-outlined">logout</a></li>
+                <li><a href="/"><span class="material-symbols-outlined">web_asset</span><span>Visit Site</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="user_list"><span class="material-symbols-outlined">person</span><span class="namelabel">Users</span></a></li>
+                        <li><a href="assign_users"><span class="material-symbols-outlined">task</span><span class="namelabel">Assign Users</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-side-sec-cont">
+                
+            </div>
+    </section>
+    <script src="/static/myadmin/script/sidebar.js"></script>
+</body>
+</html>

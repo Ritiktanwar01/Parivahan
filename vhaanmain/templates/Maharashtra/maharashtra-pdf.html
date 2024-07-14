@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <title>Online Tax Payment Portal</title>
+<link type="text/css" rel="stylesheet" href="/static/allcss/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/grid-css.css">
+    <style>
+        @page  {
+            size: auto;
+            margin: 2mm;
+        }
+
+        @media  print {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                z-index: -1;
+                left: 232px;
+                top: 60px;
+                opacity: 0.5;
+                filter: alpha(opacity=50);
+            }
+        }
+
+        @media  screen {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                image-orientation: 45deg flip;
+                font-size: 44px;
+                background-position-x: repeat-y !important;
+                z-index: -1;
+                opacity: 0.5;
+                filter: alpha(opacity=70);
+                left: 780px;
+                top: 90px;
+            }
+        }
+
+        #regn_date {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.2;
+            font-size: 20px;
+            filter: alpha(opacity=50);
+            /*                -webkit-transform: rotate(-45deg);
+                                -moz-transform: rotate(-45deg);*/
+        }
+
+        .border-un {
+            border-bottom: 1px #000 solid !important;
+            border-right: none !important;
+            border-left: none !important;
+        }
+
+        .ui-widget-content {
+            border: none !important;
+        }
+        .row-p {
+    padding-top: 8px;
+  
+}
+    </style>
+    <script>
+        function textRepeat() {
+                var str = document.getElementById("regn_number").value + " / " + document.getElementById("payment_date").value + ", ";
+                document.getElementById("regn_date").innerHTML = str.repeat(45+2);
+            }
+    </script>
+</head>
+<body onLoad="window.print(), textRepeat()">
+    <!-- ,textRepeat()     -->
+    <div class="watermark">
+        <!--            &lt;p style="font-size:100px;"&gt;Sample&lt;/p&gt;--><img id="j_idt10"
+            src="/static/assets/pdfcss/img/maharastra-removebg.png" alt="" style="height: 280px;">
+    </div>
+    <form id="formPrint" name="formPrint" method="get"
+        action="#"
+        enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="formPrint" value="formPrint">
+
+        <div class="center-position">
+            <button id="j_idt13" name="j_idt13"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                 type="submit"
+                role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-arrowreturnthick-1-w"></span><span
+                    class="ui-button-text ui-c">Back</span></button>
+            <button id="j_idt14" name="j_idt14"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                
+                onclick="window.print();"
+                type="button" role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-print"></span><span
+                    class="ui-button-text ui-c">Print</span></button>
+        </div>
+        <div class="table-responsive" style="margin-left: 30px;margin-right: 10px;margin-top: 10px;">
+            <div id="j_idt16" class="ui-outputpanel ui-widget">
+			 <input id="regn_number" type="hidden" name="regn_number"value="{{data.vehicleno}}">
+  <input id="payment_date" type="hidden" name="payment_date" value="{{data.create_date}}">
+                <p id="regn_date"></p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 
+                    <tbody><tr valign="top">
+                        <td width="17%">
+                        <div style="width: 100%;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td style="font-weight: bold;">Receipt Printing Date</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span style="font-weight: bold;" id="dVal"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span style="font-weight: bold;" id="dValms"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                        </td>
+                        <td width="61%" align="center">
+                            <div
+                                style="font-size:18px; font-weight:bold; color:#000000;text-decoration:underline; padding-right:15px;">
+                                GOVERNMENT OF MAHARASHTRA</div>
+                            <div style="font-weight: bold;font-size: 18px;"><b>Department of Transport</b></div>
+                                <div style="font-weight: bold;font-size: 16px;"><b>Checkpost Tax e-Receipt</b></div>
+                        </td>
+                        <td width="22%" rowspan="2" align="left" style="margin-right: 50px;"><span id="j_idt19">
+                            
+                        <img src="/media/qrcode/Maharashtra/{{qr_code}}.png" width="140" height="140">
+                            </span>
+                            
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr>
+                                    <td width="17%" class="row-p"><label>Registration No.</label></td>
+                                    <td width="76%" class="row-p"><span id="regn_no" style="font-weight: bold;">: {{data.vehicleno}}</span> </td>
+                                </tr>
+                                <tr>
+                                    <td width="17%" class="row-p"><label>Receipt No.</label></td>
+                                    <td width="76%" class="row-p">: <span class="row-p1">MHT<span>{{data.recipt_no}}</span></span> </td>
+                                </tr>
+                                <tr>
+                                    <td width="17%" class="row-p"><label>Payment Date</label></td>
+                                    <td width="76%" class="row-p">: <span class="row-p1" style="text-transform: uppercase;">{{data.create_date}}</span> </td>
+                                </tr>
+                                <tr>
+                                    <td width="17%" class="row-p"><label>Owner Name</label></td>
+                                    <td width="76%" class="row-p">: <span class="row-p1"> {{data.ownername}}</span> </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="3">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                                <tbody><tr>
+                                    <td width="15%" class="row-p"><label>Chassis No.</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.chassisno}}</span> </td>
+                                  <td width="15%" class="row-p"><label>Tax Mode</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.TaxMode}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="15%" class="row-p"><label>Vehilce Type</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1" id="VehicleType"> {{data.VehicleType}}</span> </td>
+                                  <td width="15%" class="row-p"><label>Vehicle Class</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.VehicleClass}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="15%" class="row-p"><label>Mobile No.</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.mobile}}</span></td>
+                                  <td width="15%" class="row-p"><label>Checkpost Name</label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.districtname}}</span> </td>
+                                </tr>
+                                <tr>
+                                    <td width="15%" class="row-p"><label id="label_one"></label></td>
+                                    <td width="35%" class="row-p">: <span class="row-p1">{{data.txt_sleeper_cap}}</span> </td>
+                                    <td width="15%" class="row-p"><label id="label_two"> 
+                                        </label></td>
+                                    <td width="35%" class="row-p">:{{data.seating_c}} </td>
+                                     </tr>
+									
+									 
+                                <tr>
+                                    <td width="15%" class="row-p"><label>Bank Ref. No.</label></td>
+                                    <td width="35%" class="row-p">:CPAAKWW336 </td>
+                                  <td width="15%" class="row-p"><label>Payment Mode</label></td>
+                                    <td width="35%" class="row-p">: ONLINE</td>
+                                </tr>
+                                    <tr>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"> </td>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"></td>
+                                    </tr>
+                                    <tr>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"> </td>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"></td>
+                                    </tr>
+                                    <tr>
+                                    <td width="15%" class="row-p"><label>Service Type</label></td>
+                                    <td width="35%" class="row-p">:{{data.ServiceType}} </td>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"></td>
+                                    </tr>                                   <tr>                                    
+									<td width="15%" class="row-p"><label>Permit Type</label></td>                                
+									<td width="35%" class="row-p">: <span class="row-p1" style="text-transform: uppercase;" id="permitVal"></span> </td>                             
+									<td width="15%" class="row-p"><label>Permit Category</label></td>                               
+									<td width="35%" class="row-p">:</td>                         
+									</tr>
+                                    <tr>
+                                    <td width="15%" class="row-p"></td>
+                                    <td width="35%" class="row-p"></td>
+                                    </tr>
+
+
+
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="row-p">
+                            <div>
+                                <div class="ui-grid-responsive" >
+                                    <table width="99%" border="0" cellspacing="0" style="border-top: 1px #000 solid;border-bottom: 1px #000 solid;border-left: none; border-right: none;" cellpadding="0">
+                                        <tbody><tr>
+                                            <td width="64%" style="font-weight:bold;">Particular</td>
+                                            <td width="12%" style="font-weight:bold;">Fees/Tax</td>
+                                            <td width="12%" style="font-weight:bold;">Fine</td>
+                                            <td width="12%" style="font-weight:bold;">Total</td>
+                                        </tr>
+                                    </tbody></table><div id="j_idt105" class="ui-datalist ui-widget">
+                                        <div id="j_idt105_content" class="ui-datalist-content ui-widget-content" style="background: none !important">
+                                            <ul id="j_idt105_list" class="ui-datalist-data" >
+                                                <li class="ui-datalist-item">
+                                        <table width="99%" border="1" cellspacing="0" style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;" cellpadding="0">
+                                            <tbody><tr>
+                                                <td width="64%">MV Tax( {{data.tax_from}} TO {{data.tax_upto}} ) </td>
+                                              <td width="12%" style="text-align: left;">{{data.total_tax_amount}}</td>
+                                              <td width="12%" style="text-align: left;">0</td>
+                                                <td width="12%" style="text-align: left;">{{data.total_tax_amount}}</td>
+                                            </tr>
+                                        </tbody></table></li>    
+										<li class="ui-datalist-item"> 
+										<table width="99%" border="1" cellspacing="0" style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;" cellpadding="0">       
+										<tbody><tr> <td width="64%">Permit fee</td>                                                     
+										<td width="12%" style="text-align: left;"><span class="ui-grid-col-1 right-position">{{data.service_amount}}</span></td>  
+										<td width="12%" style="text-align: left;">0</td>                                                      
+										<td width="12%" style="text-align: left;"><span class="ui-grid-col-1 right-position">{{data.service_amount}}</span></td>                                                   </tr>                                               </tbody></table>                                            </li>                                                                                   </ul></div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                  
+                    
+                    
+                     <tr valign="top">
+                        <td colspan="3"><span style="font-weight: bold;">Grand Total : </span>
+						<img src="#" alt="" width="10px" height="10px">₹{{data.grand_tottal}}/-</span> ( {{data.total_amt_text}} ONLY)</span>)
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="3"><span style="font-style: italic;">Note : 1) This is a computer generated printout and no signature is required.</span><br><span style="font-style: italic;">2) Incorrect  mentioning of vehicle class or seating capacity may lead to tax evasion and defaulter shall be liable for penal action.</span><br><span style="font-style: italic;"><br>You will also receive the payment confirmation message.</span>
+                        </td>
+                    </tr>
+                </tbody>
+				</table>
+                <br><h3 style="font-family: sans-serif; color:black;">Scan the QR code for genuinity of the receipt, It should land at https://kms.parivahan.gov.in
+                    site. In case the URL is different, then receipt could be a fake one, please raise a complain</h3></span>
+                <div style="float: right;">
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="-3810988453043415378:-5599655139029637065" autocomplete="off">
+    </form>
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+    <script>
+        setInterval(showTime, 1000);
+        // Create a new Date object
+        let dates = new Date();
+
+        // Get the current date, month name and year
+        let day = dates.getDate();
+        let month = dates.toLocaleString('default', { month: 'long' }); // Get the full name of the month
+        let year = dates.getFullYear();
+
+        // Display the date, month name and year in the console
+        let datemain = day + "-" + month + "-" + year;
+        let datemain2 = day + "/" + month + "/" + year;
+
+        function showTime() {
+            let time = new Date();
+            let date = time;
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            am_pm = "AM";
+
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            let currentTime = +  hour + ":"
+                + min + " " + sec;
+
+            document.getElementById("dVal").innerHTML = datemain + '  ' + currentTime;
+            document.getElementById("dValms").innerHTML = am_pm;
+        }
+        showTime();
+    </script>
+    <script>
+        function changeLabel(){
+            let label_one = document.getElementById("label_one")
+            let label_two = document.getElementById("label_two")
+            let permit = document.getElementById("permitVal")
+
+            let vehicleType = document.getElementById("VehicleType")
+
+            if(vehicleType.innerHTML == "CONTRACT CARRIAGE/PASSENGER VEHICLES"){
+                label_one.innerHTML = "Seating Cap (Ex.))"
+                label_two.innerHTML = "Sleeper Cap"
+                permit.innerHTML = "Tourist Permit"
+            }else{
+                label_one.innerHTML = "Unladen Weight"
+                label_two.innerHTML = "Laden Weight"
+                permit.innerHTML = "Temporary Permit"
+            }
+        }
+        changeLabel()
+    </script>
+</body>
+<script type="text/javascript">
+
+        var date = new Date();
+        var n = date.toDateString();
+        var time = date.toLocaleTimeString();
+        document.getElementById('time').innerHTML = n + ' ' + time;
+        let result = document.getElementById('time').innerHTML.repeat(1000);
+        document.getElementById("time").innerHTML = result;
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

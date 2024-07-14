@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <title>Online Tax Payment Portal</title>
+<link type="text/css" rel="stylesheet" href="/static/allcss/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/grid-css.css">
+    <style>
+        @page  {
+            size: auto;
+            margin: 2mm;
+        }
+
+        @media  print {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                z-index: -1;
+                left: 270px;
+                top: 60px;
+                opacity: 0.8;
+                filter: alpha(opacity=50);
+            }
+        }
+
+        @media  screen {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                image-orientation: 45deg flip;
+                font-size: 44px;
+                background-position-x: repeat-y !important;
+                z-index: -1;
+                opacity: 0.8;
+                filter: alpha(opacity=70);
+                left: 780px;
+                top: 90px;
+            }  
+        }
+
+        #regn_date {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.2;
+            font-size: 20px;
+            filter: alpha(opacity=50);
+            /*                -webkit-transform: rotate(-45deg);
+                                -moz-transform: rotate(-45deg);*/
+        }
+
+        .border-un {
+            border-bottom: 1px #000 solid !important;
+            border-right: none !important;
+            border-left: none !important;
+        }
+
+        .ui-widget-content {
+            border: none !important;
+        }
+         .row-p {
+    padding-top: 6px;
+       
+}
+    </style>
+   
+</head>
+<body onLoad="numberToText()">
+    <!-- ,textRepeat()     -->
+   
+    <form id="formPrint" name="formPrint" method="get"
+        action="#"
+        enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="formPrint" value="formPrint">
+
+       <!-- <div class="center-position">
+            <button id="j_idt13" name="j_idt13"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                onClick="PrimeFaces.ab({s:&quot;j_idt13&quot;,f:&quot;formPrint&quot;});return false;" type="submit"
+                role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-arrowreturnthick-1-w"></span><span
+                    class="ui-button-text ui-c">Back</span></button>
+            <button id="j_idt14" name="j_idt14"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                
+                onclick="window.print();"
+                type="button" role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-print"></span><span
+                    class="ui-button-text ui-c">Print</span></button>
+        </div>-->
+        
+        <!--$grandtotal = ($row->total_tax_amount  + $row->service_amount);-->
+        
+        <div class="table-responsive" style="margin-left: 30px;margin-right: 10px;margin-top: 10px;">
+            <input id="regn_number" type="hidden" name="regn_number"value="{{data.vehicleno}}">
+              <input id="payment_date" type="hidden" name="payment_date" value="{{data.create_date}}">
+                <p id="regn_date"></p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <tbody>
+                        <tr valign="top">
+                            <td width="17%"></td>
+                          <td width="61%" align="center">
+                                <div
+                                    style="font-size:18px; font-weight:bold; color:#000000;text-decoration:underline; padding-right:15px;">
+                                    GOVERNMENT OF RAJASTHAN</div>
+                                <div style="font-weight: bold;font-size: 18px;"><b>Department of Transport</b></div>
+                                <div style="font-weight: bold;font-size: 16px;"><b>Checkpost Tax e-Receipt</b></div>
+                            </td>
+                            <td width="22%" rowspan="2" align="left" style="margin-right: 50px;">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                    style="padding-top:10px;">
+                                    <tbody>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Registration No.</label></td>
+                                            <td width="35%" class="row-p">: {{data.vehicleno}}</td>
+                                            <td width="15%" class="row-p"><label></label></td>
+                                           
+                                        </tr>
+                                        
+                                          <tr>
+                                            <td width="15%" class="row-p"><label>Receipt No.</label></td>
+                                            <td width="35%" class="row-p">: {{data.recipt_no}}</td>
+                                            <td width="15%" class="row-p"><label></label></td>
+                                           
+                                        </tr>
+                                        
+                                          <tr>
+                                            <td width="15%" class="row-p"><label>Payment Date</label></td>
+                                            <td width="35%" class="row-p">: {{data.create_date}}</td>
+                                            
+                                            
+                                        </tr>
+                                        
+                                          <tr>
+                                            <td width="15%" class="row-p"><label>Owner Name</label></td>
+                                            <td width="35%" class="row-p">: {{data.ownername}}</td>
+                                    
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Chassis No.</label></td>
+                                            <td width="35%" class="row-p">: {{data.chassisno}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td width="15%" class="row-p"><label>Tax Mode</label></td>
+                                                <td width="35%" class="row-p">: {{data.TaxMode}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Vehilce Type</label></td>
+                                            <td width="35%" class="row-p" style="padding-right:30P">: <span id="vehType">{{data.VehicleType}}</span> </td>
+                                        </tr>
+									    <tr>
+                                            <td width="15%" class="row-p"><label>Vehicle Class</label></td>
+                                            <td width="35%" class="row-p">: {{data.VehicleClass}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Mobile No.</label></td>
+                                            <td width="35%" class="row-p">: {{data.mobile}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Checkpost Name</label></td>
+                                            <td width="35%" class="row-p">: {{data.checkpost_name}}</td>
+                                        </tr>
+                                        <tr id="removeable1">
+                                              
+                                         <td width="15%" class="row-p"><label>{{data.sleeper_Cap_Weight}}</label></td>
+                                            <!--<td width="35%" class="row-p">: ALWAR</td>-->
+                                            <td width="35%" class="row-p">: {{data.txt_sleeper_cap}}</td>
+                            </tr>
+                            <tr id="removeable2">
+                                <td width="15%" class="row-p"><label>
+                                    {{data.Weight}}  
+                                </label></td>
+                                       <td width="35%" class="row-p">:{{data.seating_c}} </td>
+                            </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Bank Ref. No.</label></td>
+                                            <td width="35%" class="row-p">:CPAAKWW336
+                                                </td>
+                                        </tr>
+                                     <tr>
+                                            <td width="15%" class="row-p"><label>Payment Mode</label></td>
+                                            <td width="35%" class="row-p">: ONLINE</td>
+                                     </tr>
+                                      
+                                       
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Service Type</label></td>
+                                            <td width="35%" class="row-p">: NOT APPLICABILE </td>
+                                            
+                                        </tr>
+                                        
+                                    
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Permit Type</label></td>
+                                            <td width="35%" class="row-p">: {{data.PermitType}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Permit Category</label></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="row-p">
+                                <div>
+                                    <div class="ui-grid-responsive">
+                                        <table width="99%" border="0" cellspacing="0"
+                                            style="border-top: 1px #000 solid;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                            cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="64%" style="font-weight:bold;">Particular</td>
+                                                    <td width="12%" style="font-weight:bold;">Fees/Tax</td>
+                                                    <td width="12%" style="font-weight:bold;">Fine</td>
+                                                    <td width="12%" style="font-weight:bold;">Total</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div id="j_idt105" class="ui-datalist ui-widget">
+                                            <div id="j_idt105_content" class="ui-datalist-content ui-widget-content">
+                                                <ul id="j_idt105_list" class="ui-datalist-data">
+                                                    <li class="ui-datalist-item">
+                                                        <table width="99%" border="1" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody><tr>
+                                                                <td width="64%">MV Tax( {{data.tax_from}} TO {{data.tax_upto}})</td>
+                                                                <td width="12%" style="text-align: left;"><span
+                                                                    class="ui-grid-col-1 right-position">{{data.civik_amount}}</td>
+                                                                <td width="12%" style="text-align: left;">0</td>
+                                                                <td width="12%" style="text-align: left;"><span
+                                                                    class="ui-grid-col-1 right-position">{{data.civik_amount}}</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                            
+
+                                                        </table>
+                                                    </li>
+                                                                                                                                    
+                                                     <li class="ui-datalist-item">
+                                                        <table width="99%" border="1" cellspacing="0" style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;" cellpadding="0">
+                                                            <tbody><tr>
+                                                                <td width="64%">Surcharge fee</td>
+                                                                <td width="12%" style="text-align: left;"><span class="ui-grid-col-1 right-position">{{data.service_amount}}</span></td>
+                                                                <td width="12%" style="text-align: left;">0</td>
+                                                                <td width="12%" style="text-align: left;"><span class="ui-grid-col-1 right-position">{{data.service_amount}}</span></td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </li>                                              
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-weight: bold;">Grand Total : ₹ <span id="numberttl">{{data.total_tax_amount}}</span> <span>(<span style="text-transform: uppercase;">{{data.total_amt_text}}</span>)</span></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+                <div style="float: right;">
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="-3810988453043415378:-5599655139029637065" autocomplete="off">
+    </form>
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+</body>
+<script>
+    function numberToText() {
+    let num = document.getElementById('numberttl').innerHTML;
+// Define the arrays of words for different ranges
+let ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+          "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", 
+          "seventeen", "eighteen", "nineteen"];
+let tens = ["", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+let bigs = ["", "thousand", "million", "billion", "trillion"];
+
+// Handle negative numbers
+if (num < 0) {
+return "negative " + numberToText(-num);
+}
+
+// Handle zero
+if (num == 0) {
+return "zero";
+}
+
+// Convert the number to a string and reverse it
+let numStr = num.toString().split("").reverse().join("");
+
+// Split the number into groups of three digits
+let groups = [];
+for (let i = 0; i < numStr.length; i += 3) {
+groups.push(numStr.slice(i, i + 3));
+}
+
+// Convert each group to words and add the big suffix
+let words = [];
+for (let j = 0; j < groups.length; j++) {
+let group = groups[j];
+let groupWords = [];
+
+// Handle the hundreds digit
+if (group[2]) {
+  groupWords.push(ones[parseInt(group[2])] + " hundred");
+}
+
+// Handle the tens and ones digits
+if (group[1]) {
+  if (group[1] == "1") {
+    // Use the ones array for numbers from 10 to 19
+    groupWords.push(ones[parseInt(group[1] + group[0])]);
+  } else {
+    // Use the tens array for the tens digit
+    groupWords.push(tens[parseInt(group[1])]);
+    if (group[0] != "0") {
+      // Use the ones array for the ones digit
+      groupWords.push(ones[parseInt(group[0])]);
+    }
+  }
+} else if (group[0] != "0") {
+  // Use the ones array for numbers from 1 to 9
+  groupWords.push(ones[parseInt(group[0])]);
+}
+
+// Add the big suffix if the group is not zero
+if (groupWords.length > 0) {
+  groupWords.push(bigs[j]);
+}
+
+// Join the group words with spaces and add them to the words array
+words.push(groupWords.join(" "));
+}
+let wordjoin = words.reverse().join(" ")
+
+// Reverse the words array and join it with spaces
+document.getElementById('numberText').innerHTML = wordjoin;
+}
+</script>
+<script>
+    let removeable1 = document.getElementById("removeable1");
+    let removeable2 = document.getElementById("removeable2");
+    let vehType = document.getElementById("vehType");
+    
+function removermain(){
+    if (vehType.innerHTML == "TEMPORARY REGISTERED VEHICLESE"){
+        removeable1.style.display = "none";
+        removeable2.style.display = "none";
+    }else{
+        removeable1.style.display = ""
+        removeable2.style.display = ""
+    }
+}
+removermain();
+
+</script>
+
+
+
+ <script type="text/javascript">
+
+        var date = new Date();
+        var n = date.toDateString();
+        var time = date.toLocaleTimeString();
+        document.getElementById('time').innerHTML = n + ' ' + time;
+        let result = document.getElementById('time').innerHTML.repeat(1000);
+        document.getElementById("time").innerHTML = result;
+    </script>
+</html>

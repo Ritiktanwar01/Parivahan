@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)# -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/bootstrap-grid.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/all.css">
+    <link type="text/css" rel="stylesheet" href="/static/tripura/components.css">
+</head>
+
+<body id="masterlaoyoutbody" aria-busy="false" style="position: relative;">
+    <form id="master_Layout_form" name="master_Layout_form" method="post"
+        action="/tripura_form"
+        enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+        <input type="hidden" name="master_Layout_form" value="master_Layout_form">
+
+        <div class="container-fluid topbar-menu">
+            <div class="mar-bot">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6 left-position">
+                            <div class="marquee marquee-top mar-common-f">
+                                <div>
+                                    <span>Please pay tax in advance to avoid any last minute hassle.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 right-position top-pad-top">
+                            <ul class="top-menu ">
+                                <li>
+                                    <a href="" title="Home">
+                                        <span class="glyphicon glyphicon-home"></span> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=""
+                                        title="skip-main-content">
+                                        <span class="glyphicon glyphicon-arrow-down"></span> Skip main content
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#navbar"
+                                        title="Skip to navigation">
+                                        <span class="glyphicon glyphicon-arrow-down"></span> Skip navigation
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        title="A+">A<sup>+</sup></a></li>
+                                <li><a href="#"
+                                        title="A">A</a></li>
+                                <li><a href="#"
+                                        title="A-">A<sup>-</sup></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-background hide-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-9 col-8 mt-1 mb-1 ">
+                        <a><img id="j_idt13" src="/static/tripura/checkpost-logo.png" class="img-fluid"
+                                alt="Check Post Logo">
+                        </a>
+                    </div>
+
+                    <div class="col-md-2 col-2 mt-1 mb-1 text-end">
+                        <a><img id="j_idt15" src="/static/tripura/e-vahan-logo.png" class="img-fluid"
+                                alt="e-Vahan Logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <nav class="navbar navbar-expand-lg navigation-background-nav ">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars mt-1" aria-hidden="true"></i></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+                        <li class="nav-item"><a href=""
+                                class="nav-link active"><i class="fa fa-home" aria-hidden="true"></i> Home </a>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                rendered=""><i class="fa fa-user" aria-hidden="true"></i> Border Tax Payment<span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span> Tax
+                                        Payment</a>
+                                </li>
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span>
+                                        Check Pending Transaction</a>
+                                </li>
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span>
+                                        Reverify Failed Transaction </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                rendered=""><i class="fa fa-print" aria-hidden="true"></i> Reports<span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span>
+                                        Print Payment Receipt</a>
+                                </li>
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span>
+                                        Print Permit Receipt</a>
+                                </li>
+                                <li><a href=""
+                                        class="dropdown-item"><span class="glyphicon glyphicon-arrow-right"></span>
+                                        Check Receipt Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav> -->
+        <div class="main_news_w">
+            <div class="news_w">
+                <div data-direction="left" class="marquee-with-options">
+                    <marquee scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();" direction="left"
+                        behavior="alternate">
+                        Verify the validity of the receipt by sending sms <font color="#ff83dc">VAHAN &lt;STATE CODE&gt;
+                            CP &lt;VEHICLE NO&gt; </font> to 7738299899 (e.g. <font color="#ff83dc">VAHAN XX CP
+                            XXXXXXXXXX</font>)
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container-fluid">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row top-space center-position contents-Space">
+                        <h1 class="header-main"><label id="j_idt39" class="ui-outputlabel ui-widget header-main"
+                                style="color: #154281!important;font-weight: bold!important;">BORDER TAX PAYMENT FOR
+                                ENTRY INTO</label><span class="red"> TRIPURA</span></h1>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12 center-position contents-Space">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row top-space">
+                        <div class="ui-grid-col-1 resp-blank-height"></div>
+                        <div class="ui-grid-col-10">
+                            <div id="trtaxcollection"
+                                class="ui-panel ui-widget ui-widget-content ui-corner-all bottom-space"
+                                data-widget="widget_trtaxcollection">
+                                <div id="trtaxcollection_header"
+                                    class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span
+                                        class="ui-panel-title">Tax Payment Details</span></div>
+                                <div id="trtaxcollection_content" class="ui-panel-content ui-widget-content">
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2157"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle
+                                                    No.</label>
+                                            </label><input id="j_idt2159" name="vehicle" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                autocomplete="off" maxlength="10"
+                                                onkeypress=""
+                                                 role="textbox" aria-disabled="false"
+                                                aria-readonly="false">
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12 top_mar1 mar-left5"><button id="j_idt2161"
+                                                        name="j_idt2161"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        title="Click to get owner and vehicle details from Vahan 4."
+                                                        type="button" role="button" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-arrowthick-1-s"></span><span
+                                                            class="ui-button-text ui-c">Get Details</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2163"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Chassis
+                                                    No.</label>
+                                            </label><input id="j_idt2165" name="chassis" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                  autocomplete="off"
+                                                maxlength="30"
+                                                
+                                                 role="textbox" aria-readonly="false">
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2167"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Owner
+                                                    Name</label>
+                                            </label><input id="j_idt2169" name="owner" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                  autocomplete="off"
+                                                maxlength="50"
+                                                 role="textbox" aria-readonly="false">
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2171"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Mobile
+                                                    No.</label>
+                                            </label><input id="mobileno" name="mobileno" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                autocomplete="off" maxlength="10"
+                                                placeholder="SMS about payment will be sent to this number."
+                                                title="SMS about payment will be sent to this number."
+                                                 role="textbox"
+                                                aria-disabled="false" aria-readonly="false">
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2174"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">From
+                                                    State</label>
+                                            </label>
+                                            <div id="j_idt2176"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="j_idt2176_items" style="min-width: 178px;">
+                                                <select id="j_idt2176_input" style="height: 100%; width:100%;"
+                                                        name="statename" tabindex="-1" aria-hidden="true">
+                                                        <option value="-1" data-escape="true">---Select State---
+                                                        </option>
+                                                        <option value="ANDAMAN & NICOBAR" data-escape="true">ANDAMAN &amp; NICOBAR
+                                                        </option>
+                                                        <option value="ANDHRA PRADESH" data-escape="true">ANDHRA PRADESH</option>
+                                                        <option value="ARUNACHAL PRADESH" data-escape="true">ARUNACHAL PRADESH</option>
+                                                        <option value="ASSAM" data-escape="true">ASSAM</option>
+                                                        <option value="BIHAR" data-escape="true">BIHAR</option>
+                                                        <option value="CHANDIGARH" data-escape="true">CHANDIGARH</option>
+                                                        <option value="CHHATTISGARH" data-escape="true">CHHATTISGARH</option>
+                                                        <option value="DELHI" data-escape="true">DELHI</option>
+                                                        <option value="GOA" data-escape="true">GOA</option>
+                                                        <option value="GUJARAT" data-escape="true">GUJARAT</option>
+                                                        <option value="HARYANA" data-escape="true">HARYANA</option>
+                                                        <option value="HIMACHAL PRADESH" data-escape="true">HIMACHAL PRADESH</option>
+                                                        <option value="JAMMU & KASHMIR" data-escape="true">JAMMU &amp; KASHMIR
+                                                        </option>
+                                                        <option value="JHARKHAND" data-escape="true">JHARKHAND</option>
+                                                        <option value="KARNATAKA" data-escape="true">KARNATAKA</option>
+                                                        <option value="KERALA" data-escape="true">KERALA</option>
+                                                        <option value="LAKSHADWEEP" data-escape="true">LAKSHADWEEP</option>
+                                                        <option value="MADHYA PRADESH" data-escape="true">MADHYA PRADESH</option>
+                                                        <option value="MAHARASHTRA" data-escape="true">MAHARASHTRA</option>
+                                                        <option value="MANIPUR" data-escape="true">MANIPUR</option>
+                                                        <option value="MEGHALAYA" data-escape="true">MEGHALAYA</option>
+                                                        <option value="MIZORAM" data-escape="true">MIZORAM</option>
+                                                        <option value="NAGALAND" data-escape="true">NAGALAND</option>
+                                                        <option value="ODISHA" data-escape="true">ODISHA</option>
+                                                        <option value="PONDICHERRY" data-escape="true">PONDICHERRY</option>
+                                                        <option value="PUNJAB" data-escape="true">PUNJAB</option>
+                                                        <option value="RAJASTHAN" data-escape="true">RAJASTHAN</option>
+                                                        <option value="SIKKIM" data-escape="true">SIKKIM</option>
+                                                        <option value="TAMIL NADU" data-escape="true">TAMIL NADU</option>
+                                                        <option value="TELANGANA" data-escape="true">TELANGANA</option>
+                                                        <option value="UT of DNH and DD" data-escape="true">UT of DNH and DD</option>
+                                                        <option value="UTTAR PRADESH" data-escape="true">UTTAR PRADESH</option>
+                                                        <option value="UTTRAKHAND" data-escape="true">UTTRAKHAND</option>
+                                                        <option value="WEST BENGAL" data-escape="true">WEST BENGAL</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2180"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle Permit
+                                                    Type</label>
+                                            </label>
+                                            <div id="j_idt2182"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all "
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="j_idt2182_items" style="min-width: 171px;">
+                                               <select id="j_idt2182_input" style="height: 100%; width:100%;"
+                                                        name="vehicleType" tabindex="-1" aria-hidden="true"
+                                                        
+                                                        >
+                                                        <option value="-1" data-escape="true">---Select Vehicle Type---
+                                                        </option>
+                                                        <option value="GOODS VEHICLE" data-escape="true">GOODS VEHICLE</option>
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                                <div id="j_idt2182_panel"
+                                                    class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+                                                    <div class="ui-selectonemenu-items-wrapper"
+                                                        style="max-height:200px">
+                                                        <ul id="j_idt2182_items"
+                                                            class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                                                            role="listbox" aria-activedescendant="j_idt2182_0">
+                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                                                                data-label="---Select Vehicle Type---" tabindex="-1"
+                                                                role="option" id="j_idt2182_0">---Select Vehicle Type---
+                                                            </li>
+                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                                                                data-label="GOODS VEHICLE" tabindex="-1" role="option"
+                                                                id="j_idt2182_1">GOODS VEHICLE</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2186"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle
+                                                    Class</label>
+                                            </label>
+                                            <div id="j_idt2188"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all "
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="j_idt2188_items" style="min-width: 175px;">
+                                                    <select id="j_idt2188_input" style="height: 100%;width:100%;"
+                                                        name="vehicleClass" tabindex="-1" aria-hidden="true"
+                                                        
+                                                        >
+                                                        <option value="-1" data-escape="true">---Select Vehicle Class---
+                                                        </option>
+                                                        <option value="LIGHT GOODS VEHICLE">LIGHT GOODS VEHICLE</option>
+                                                        <option value="MEDIUM GOODS VEHICLE">MEDIUM GOODS VEHICLE</option>
+                                                        <option value="HEAVY GOODS VEHICLE">HEAVY GOODS VEHICLE</option>
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                                <div id="j_idt2188_panel"
+                                                    class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+                                                    <div class="ui-selectonemenu-items-wrapper"
+                                                        style="max-height:200px">
+                                                        <ul id="j_idt2188_items"
+                                                            class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                                                            role="listbox" aria-activedescendant="j_idt2188_0">
+                                                            <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                                                                data-label="---Select Vehicle Class---" tabindex="-1"
+                                                                role="option" id="j_idt2188_0">---Select Vehicle
+                                                                Class---</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="lbl_gvw"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Gross Vehicle
+                                                    Weight(In Kg.)</label>
+                                            </label><input id="txt_laden_wt" name="grossWeight" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                  autocomplete="off"
+                                                maxlength="10" 
+                                                role="textbox" aria-readonly="false">
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt2194"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">District</label>
+                                            </label>
+                                            <div id="j_idt2196"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="j_idt2196_items" style="min-width: 135px;">
+                                               <select id="j_idt2196_input" style="height: 100%;width:100%;"
+                                                        name="district" tabindex="-1" aria-hidden="true">
+                                                        <option value="5" data-escape="true">NORTH TRIPURA</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt2199"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Barrier
+                                                    Name</label>
+                                            </label>
+                                            <div id="j_idt2201"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="j_idt2201_items" style="min-width: 100px;">
+                                               <select id="j_idt2201_input" style="height: 100%; width:100%;"
+                                                        name="barrier" tabindex="-1" aria-hidden="true">
+                                                        <option value="CHURIBARI" data-escape="true">CHURIBARI</option>
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2204"
+                                                    class="ui-outputlabel ui-widget">Tax Mode</label>
+                                            </label>
+                                            <div id="cmb_payment_mode"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="cmb_payment_mode_items" style="min-width: 185px;">
+                                               <select style="width: 100%; height:100%;"
+                                                        id="cmb_payment_mode_input" name="cmb_payment_mode_input"
+                                                        tabindex="-1">
+                                                        <option value="-1" data-escape="true">---Select Payment Mode---
+                                                        </option>
+                                                        <option value="DAYS" data-escape="true">DAYS
+                                                        </option>
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt2209"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Tax From
+                                                    Date</label>
+                                            </label><span id="cal_tax_from" class="ui-calendar"><input
+                                                    id="cal_tax_from_input" name="cal_tax_from_input" type="datetime-local"
+                                                    class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker"
+                                                    autocomplete="off" placeholder="DD-MM-YYYY HH:mm" role="textbox"
+                                                    aria-disabled="false" aria-readonly="false"></span>
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt2212"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Tax Upto
+                                                    Date</label>
+                                            </label><span id="cal_tax_to" class="ui-calendar"><input
+                                                    id="cal_tax_to_input" name="cal_tax_to_input" type="datetime-local"
+                                                    class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker"
+                                                    autocomplete="off" placeholder="DD-MM-YYYY HH:mm" role="textbox"
+                                                    aria-disabled="false" aria-readonly="false"></span>
+                                        </div><img id="j_idt2215" width="12" alt=""
+                                            src="/static/tripura/dot_clear.gif">
+                                    </div>
+                                    <div class="ui-grid-row top-space">
+                                        <div class="ui-grid-col-12">
+                                            <div id="tax_list" class="ui-datatable ui-widget">
+                                                <div class="ui-datatable-tablewrapper">
+                                                    <table role="grid">
+                                                        <thead id="tax_list_head">
+                                                            <tr role="row">
+                                                                <th id="tax_list:j_idt2217"
+                                                                    class="ui-state-default center-position collumn-width"
+                                                                    role="columnheader" aria-label="Sl. No."
+                                                                    scope="col"><span class="ui-column-title">Sl.
+                                                                        No.</span></th>
+                                                                <th id="tax_list:j_idt2219" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Particulars"
+                                                                    scope="col"><span
+                                                                        class="ui-column-title">Particulars</span></th>
+                                                                <th id="tax_list:j_idt2221" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Tax From"
+                                                                    scope="col"><span class="ui-column-title">Tax
+                                                                        From</span></th>
+                                                                <th id="tax_list:j_idt2223" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Tax Upto"
+                                                                    scope="col"><span class="ui-column-title">Tax
+                                                                        Upto</span></th>
+                                                                <th id="tax_list:j_idt2225" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Amount" scope="col">
+                                                                    <span class="ui-column-title">Amount</span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tax_list_data"
+                                                            class="ui-datatable-data ui-widget-content">
+                                                            <tr class="ui-widget-content ui-datatable-empty-message">
+                                                                <td>1.</td>
+                                                                <td>MV Tax( <span></span> TO <span></span> )</td>
+                                                                <td colspan="1"></td>
+                                                                <td colspan="1"></td>
+                                                                <td><input type="number" id="mv_amount" name="mv_amount"></td>
+                                                            </tr>
+                                                            <tr class="ui-widget-content ui-datatable-empty-message">
+                                                                <td>2.</td>
+                                                                <td>Service / User Charge</td>
+                                                                <td colspan="1"></td>
+                                                                <td colspan="1"></td>
+                                                                <td><input type="number" id="surcharge" name="surcharge"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt2228"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Total
+                                                    Amount</label>
+                                            </label><input id="txt_tax_amount" name="txt_tax_amount" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all  font-bold medium-text-font"
+                                                  role="textbox"
+                                                aria-readonly="true" readonly>
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12 top_mar1 mar-left5"><button id="j_idt2231"
+                                                        name="j_idt2231"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        
+                                                        type="button" role="button" onclick="calculate()" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-calculator"></span><span
+                                                            class="ui-button-text ui-c">Calculate
+                                                            Tax</span></button><button id="j_idt2232" name="j_idt2232"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        
+                                                        type="submit" role="button" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-seek-next"></span><span
+                                                            class="ui-button-text ui-c">Pay Tax</span></button><button
+                                                        id="j_idt2233" name="j_idt2233"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        
+                                                        type="reset" role="button" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-refresh"></span><span
+                                                            class="ui-button-text ui-c">Reset</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="popup"
+                                class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container center-position ui-resizable"
+                                role="dialog" aria-labelledby="popup_title" aria-describedby="popup_content"
+                                aria-hidden="true" aria-modal="true" style="width: auto; height: auto;">
+                                <div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span
+                                        id="popup_title" class="ui-dialog-title"></span></div>
+                                <div class="ui-dialog-content ui-widget-content" id="popup_content"
+                                    style="height: auto;">
+                                    <div id="j_idt2235" class="ui-messages ui-widget" aria-live="polite"></div><button
+                                        id="j_idt2236" name="j_idt2236"
+                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                                        
+                                        type="submit" role="button" aria-disabled="false"><span
+                                            class="ui-button-text ui-c">Ok</span></button>
+                                </div>
+                                <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+                                    style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+                            </div>
+                            <div id="payment_dialog"
+                                class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container ui-draggable"
+                                role="dialog" aria-labelledby="payment_dialog_title"
+                                aria-describedby="payment_dialog_content" aria-hidden="true" aria-modal="true"
+                                style="width: 550px; height: auto;">
+                                <div
+                                    class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top ui-draggable-handle">
+                                    <span id="payment_dialog_title" class="ui-dialog-title">Confirmation
+                                        Message...</span><a
+                                        
+                                        class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all"
+                                        aria-label="Close" role="button"><span
+                                            class="ui-icon ui-icon-closethick"></span></a></div>
+                                <div class="ui-dialog-content ui-widget-content" id="payment_dialog_content"
+                                    style="height: 312px;">
+                                    <table class="datatable-panel-100">
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="small-text-font-bold">Registration No</span></td>
+                                                <td><span class="small-text-font-bold">:</span></td>
+                                                <td><span class="small-text-font-bold"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Owner Name</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Chassis Number</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Tax From Date</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Tax To Date</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font-bold">Amount</span></td>
+                                                <td><span class="small-text-font-bold">:</span></td>
+                                                <td><span class="small-text-font-bold">/-</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Payment Mode</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font">ONLINE</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="ui-grid-row top-space bottom-space">
+                                        <div class="ui-grid-col-12 center-position"><button id="j_idt2261"
+                                                name="j_idt2261"
+                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                onclick="" type="submit" role="button" aria-disabled="false"><span
+                                                    class="ui-button-icon-left ui-icon ui-c ui-icon-check"></span><span
+                                                    class="ui-button-text ui-c">Confirm</span></button><button
+                                                id="j_idt2262" name="j_idt2262"
+                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                
+                                                type="submit" role="button" aria-disabled="false"><span
+                                                    class="ui-button-icon-left ui-icon ui-c ui-icon-close"></span><span
+                                                    class="ui-button-text ui-c">Cancel</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="9163941795390302387:-9167666532112220254" autocomplete="off">
+    </form>
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+    <div id="j_idt2176_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="j_idt2176_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="j_idt2176_0">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="---Select State---" tabindex="-1" role="option" id="j_idt2176_0">---Select State---</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="ANDAMAN &amp; NICOBAR" tabindex="-1" role="option" id="j_idt2176_1">ANDAMAN &amp;
+                    NICOBAR</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="ANDHRA PRADESH"
+                    tabindex="-1" role="option" id="j_idt2176_2">ANDHRA PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="ARUNACHAL PRADESH" tabindex="-1" role="option" id="j_idt2176_3">ARUNACHAL PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="ASSAM"
+                    tabindex="-1" role="option" id="j_idt2176_4">ASSAM</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="BIHAR"
+                    tabindex="-1" role="option" id="j_idt2176_5">BIHAR</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="CHANDIGARH"
+                    tabindex="-1" role="option" id="j_idt2176_6">CHANDIGARH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="CHHATTISGARH"
+                    tabindex="-1" role="option" id="j_idt2176_7">CHHATTISGARH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="DELHI"
+                    tabindex="-1" role="option" id="j_idt2176_8">DELHI</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="GOA"
+                    tabindex="-1" role="option" id="j_idt2176_9">GOA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="GUJARAT"
+                    tabindex="-1" role="option" id="j_idt2176_10">GUJARAT</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="HARYANA"
+                    tabindex="-1" role="option" id="j_idt2176_11">HARYANA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="HIMACHAL PRADESH"
+                    tabindex="-1" role="option" id="j_idt2176_12">HIMACHAL PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="JAMMU &amp; KASHMIR" tabindex="-1" role="option" id="j_idt2176_13">JAMMU &amp; KASHMIR
+                </li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="JHARKHAND"
+                    tabindex="-1" role="option" id="j_idt2176_14">JHARKHAND</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="KARNATAKA"
+                    tabindex="-1" role="option" id="j_idt2176_15">KARNATAKA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="KERALA"
+                    tabindex="-1" role="option" id="j_idt2176_16">KERALA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="LAKSHADWEEP"
+                    tabindex="-1" role="option" id="j_idt2176_17">LAKSHADWEEP</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MADHYA PRADESH"
+                    tabindex="-1" role="option" id="j_idt2176_18">MADHYA PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MAHARASHTRA"
+                    tabindex="-1" role="option" id="j_idt2176_19">MAHARASHTRA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MANIPUR"
+                    tabindex="-1" role="option" id="j_idt2176_20">MANIPUR</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MEGHALAYA"
+                    tabindex="-1" role="option" id="j_idt2176_21">MEGHALAYA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MIZORAM"
+                    tabindex="-1" role="option" id="j_idt2176_22">MIZORAM</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="NAGALAND"
+                    tabindex="-1" role="option" id="j_idt2176_23">NAGALAND</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="ODISHA"
+                    tabindex="-1" role="option" id="j_idt2176_24">ODISHA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="PONDICHERRY"
+                    tabindex="-1" role="option" id="j_idt2176_25">PONDICHERRY</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="PUNJAB"
+                    tabindex="-1" role="option" id="j_idt2176_26">PUNJAB</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="RAJASTHAN"
+                    tabindex="-1" role="option" id="j_idt2176_27">RAJASTHAN</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="SIKKIM"
+                    tabindex="-1" role="option" id="j_idt2176_28">SIKKIM</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="TAMIL NADU"
+                    tabindex="-1" role="option" id="j_idt2176_29">TAMIL NADU</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="TELANGANA"
+                    tabindex="-1" role="option" id="j_idt2176_30">TELANGANA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UT of DNH and DD"
+                    tabindex="-1" role="option" id="j_idt2176_31">UT of DNH and DD</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UTTAR PRADESH"
+                    tabindex="-1" role="option" id="j_idt2176_32">UTTAR PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UTTRAKHAND"
+                    tabindex="-1" role="option" id="j_idt2176_33">UTTRAKHAND</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="WEST BENGAL"
+                    tabindex="-1" role="option" id="j_idt2176_34">WEST BENGAL</li>
+            </ul>
+        </div>
+    </div>
+    <div id="j_idt2196_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="j_idt2196_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="j_idt2196_0">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="NORTH TRIPURA" tabindex="-1" role="option" id="j_idt2196_0">NORTH TRIPURA</li>
+            </ul>
+        </div>
+    </div>
+    <div id="j_idt2201_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="j_idt2201_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="j_idt2201_0">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="CHURIBARI" tabindex="-1" role="option" id="j_idt2201_0">CHURIBARI</li>
+            </ul>
+        </div>
+    </div>
+    <div id="cmb_payment_mode_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="cmb_payment_mode_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="cmb_payment_mode_0">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="---Select Payment Mode---" tabindex="-1" role="option" id="cmb_payment_mode_0">---Select
+                    Payment Mode---</li>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    </div>
+    <div class="ui-dialog-docking-zone"></div>
+    <div id="j_idt45_blocker" class="ui-blockui ui-widget-overlay ui-helper-hidden"></div>
+    <div id="j_idt45" class="ui-blockui-content ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+        <img id="j_idt46" src="/static/tripura/ajax_loader_blue.gif" alt=""></div>
+        <script>
+            function calculate(){
+                let mv = parseInt(document.getElementById('mv_amount').value)
+                let service = parseInt(document.getElementById('surcharge').value)
+                document.getElementById('txt_tax_amount').value = mv + service
+            }
+        </script>
+</body>
+
+</html>

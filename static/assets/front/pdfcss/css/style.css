@@ -1,0 +1,80 @@
+/* body {
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='red' font-size='20'> HR38X8733 / 25-JUN-2022 </text></svg>");
+  } */
+
+.mainUpFormpdf{
+    padding: 40px 0;
+}
+.mainheadingpdf h4{
+    text-align: center;
+    font-weight: 800;
+}
+.subheadingpdf h6{
+    text-align: center;
+    font-size: inherit;
+}
+.subsubheadingpdf h6{
+    text-align: center;
+    font-size: inherit;
+}
+.bordertopcss{
+    border-top: 2px solid;
+}
+.tableborderclas{
+    border-bottom: 2px solid;
+}
+.innerParagraphsect p{
+    color: rgb(40, 40, 40);
+}
+.innerParagraphsect p span{
+    color: #000;
+    font-weight: 700;
+}
+.topborderonepx{
+    border-top: 0px solid currentColor !important;
+}
+.tablesectinner{
+    text-align: right;
+}
+.tablesectinner img{
+    position: absolute;
+    top: 15%;
+    right: 3%;
+}
+
+section.maindivofup   {
+    /* background: linear-gradient(45deg, #e7e7e7, transparent),url(pdfcss/img/up_background.png); */
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+.tablepaddingclas td{
+    padding: 0.52rem !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .tablesectinner img{
+        position: relative;
+    }
+    
+  }
+
+  /* @printmedia only screen and (max-width: 767px) {
+    .tablesectinner img{
+        position: relative;
+    }
+    
+  } */
+
+  
+p#time {
+    position: fixed;
+    z-index: -1;
+    color: #e5e1e17a;
+    font-size: 26px;
+}
+
+td {
+    font-size: 17px;
+    font-weight: 500;
+    color: #2d2c2e;
+}

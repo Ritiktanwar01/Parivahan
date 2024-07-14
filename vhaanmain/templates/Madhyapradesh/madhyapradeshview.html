@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>VEHICLE TAX PAYMENT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="/static/allcss/layout1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+      body{font-family:arial;background-color:#fff;margin:0px;padding:0px;}
+      .recentcomments a {display:inline !important;padding:0 !important;margin:0 !important;}
+      #menu-main li{width:119px;}
+      .white_link:link,.white_link:visited{color:#666;text-decoration:none;margin:10px;padding:10px;font-size:14px;}
+      .white_link:hover,.white_link:active{color:#bf0400;text-decoration:none;margin:10px;padding:10px;}
+    </style>
+    <style type='text/css'>
+      /*body{padding:0px; margin:0px;background-color:#eee;}*/
+      .container{background-color:#fff;box-shadow:0 0 30px #000; padding:0px 20px 15px 20px;}
+      .error{color:red;font-weight:300;}
+      .foooter1{padding:30px 0px; margin:0;border-top:2px solid #ec868d; font-size:12px;}
+      .foooter1.span{font-size:12px;}
+      .icon_social_top{height:30px; margin-top:10px;float:right; margin-right:5px;}
+      .li_footer{list-style:none;margin-left:10px;}
+      .icon_social_footer{height:22px; margin-bottom:5px;}
+      .span_footer{margin-left:10px;}
+      .a_footer:link, .a_footer:visited{text-decoration:none; color:#ccc; font-size:13px;}
+      .a_footer:hover{text-decoration:none; color:red; font-size:13px;}
+      .promo{background-color:transparent; color:#fff; border:0px solid #ec868d; padding:20px;}
+      .promo2{color:#fff; padding:25px 3px; text-align:center; height:120px; margin-bottom:30px;}
+      .scrollup{width:40px; height:40px; text-indent:-9999px; opacity:0.5; position:fixed;bottom:50px; right:30px; display:none;background: url('https://mptxtxtx.vahanetaxfilingservices.com/assets/img/icon_top.png') no-repeat;}
+      .span_navy{color:blue;}
+      .border{border:1px solid #ec868d;border-radius:8px;padding:10px;}
+      .bg{background-color:#ffe5e9;}
+      .bg2{background-color:#ffefe8;}
+      .text_red{color:#bf0400;font-weight:700;}
+      .text_blue{color:#0b4a8f;font-weight:700;}
+      .form:focus{background-color:#c6ffc6;}
+      .text-field:focus, input[type='text']:focus, input[type='password']:focus, input[type='int']:focus, input[type='radio']:focus, .ui-selectonemenu:focus, .ui-selectmanymenu:focus, .ui-selectonemenu.ui-state-focus, .ui-selectmanymenu.ui-state-focus, .ui-chkbox-box.ui-state-focus, .ui-chkbox-box:focus, .ui-selectcheckboxmenu-label.ui-state-hover, .ui-inputtextarea.ui-state-hover {background: #c6ffc6 !important;border-color: #1682ba !important;outline: 0;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+        input,select{border:1px solid #1682ba;text-transform:uppercase;}
+    </style>
+  </head>
+  <body style="overflow-x:hidden;">
+    <div class="container-fluid" style="padding:0px;">
+      <div class="row">
+        <div class="col-sm-12">
+          
+        </div>
+      </div>
+              <div class="row" style="background-repeat:repeat-x;">
+          <div class="col-sm-12" style="height:40px;padding:10px">
+
+            
+          <a class="white_link" href=""><i class="fa fa-file"></i> Change State</a>
+          <a class="white_link" href=""><i class="fa fa-print"></i> All Booking</a>
+          <a class="white_link" href=""><i class="fa fa-sign-out"></i> Logout</a>
+		  
+          <span style="float:right;margin-right:20px;"><?=$this->session->userdata('fullName')?></span>
+		  
+          </div>
+        </div>
+            <!-- <div class="row" style="background-color:#0e8bd3;color:white;padding:5px;font-size:100%;">
+        <div class="col-sm-12">
+          <marquee width="100%" behavior="alternate" direction="left" scrollamount="10" scrolldelay="100">
+            Verify the validity of the receipt by sending sms <font style="color:pink;">VAHAN < STATE CODE > CP < VEHICLE NO ></font> to 7738299899 (e.g. <font style="color:pink;">VAHAN XX CP XXXXXXXXXXX</font>)
+          </marquee>
+        </div>
+      </div>
+      <div class="row" style="background-color:#a0d7ff;color:white;padding:5px;font-size:100%;color:red;">
+        <div class="col-sm-12">
+          <marquee width="100%" behavior="alternate" direction="left" scrollamount="10" scrolldelay="100">
+            Select the services name carefully in case you select wrong service and pay the fee/tax, amount will not be refunded or adjusted.
+          </marquee>
+        </div>
+      </div> -->
+    </div>  <!--home-->
+
+<!-- End home -->
+<script src="https://mptxtxtx.vahanetaxfilingservices.com/assets/js/scrollup.min.js"></script>
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+ 
+     <div class="">
+    <div class="message"></div>
+ 
+	<div id="thank-you-message"> <?php echo $this->session->flashdata('message_name'); ?> </div>
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        
+        <div class="ui-grid-row">
+		 <div class="ui-grid-col-3 resp-blank-height"></div>
+             <div class="ui-grid-col-6">
+                <div class="card card-outline-info data-table-card">
+                 
+                    <div class="card-body">
+					
+				
+                        <div class="table-responsive ">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Registration No</th>
+                                        <th>Chassis No</th>
+                                        <th>Owner Name</th>
+										 <th>Mobile No</th>
+										 <th>Checkpost Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+								<tbody>
+                                    <?php
+									$n=1;
+									foreach($profile as $value):  ?>
+                                    <tr style="vertical-align:top">
+                                        <td><?php echo $n; ?></td>
+										<td><a target="_blank" href="<?php echo base_url(); ?>home/Madhyapradeshpdf/<?php echo $value->id; ?>"><abbr title="Reports"><?php echo $value->vehicleno; ?></a></td>
+                                        <td><?php echo $value->vehicleno; ?></td>
+                                        <td><?php echo $value->chassisno; ?></td>
+                                        <td><?php echo $value->ownername; ?></td>
+                                        <td><?php echo $value->mobile; ?></td>
+                                        <td><?php echo $value->from_state; ?></td>
+                                      
+                                       
+                                    </tr>
+                                    <?php
+									$n++;
+									endforeach; ?>
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                      <th>Sr No</th>
+                                      <th>PI No</th>
+                                      <th>PI Date</th>
+                                        <th>Client Name</th>
+									     <th>State Name</th>
+									     <th>User Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot> -->
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+<script>
+    $(document).ready(function () {
+
+        $('.fetchLeaveTotal').on('click', function (e) {
+            e.preventDefault();
+            var selectedEmployeeID = $('.selectedEmployeeID').val();
+            var leaveTypeID = $('.assignleave').val();
+            //console.log(selectedEmployeeID, leaveTypeID);
+            $.ajax({
+                url: 'LeaveAssign?leaveID=' + leaveTypeID + '&employeeID=' +selectedEmployeeID,
+                method: 'GET',
+                data: '',
+            }).done(function (response) {
+                //console.log(response);
+                $("#total").html(response);
+            });
+        });
+    });
+</script>
+        <script>
+        /*DATETIME PICKER*/
+          $("#bbbSubmit").on("click", function(event){
+              event.preventDefault();
+              var typeid = $('.typeid').val();
+              var datetime = $('.mydatetimepicker').val();
+              var emid = $('.emid').val();
+              //console.log(datetime);
+              $.ajax({
+                  url: "GetemployeeGmLeave?year="+datetime+"&typeid="+typeid+"&emid="+emid,
+                  type:"GET",
+                  dataType:'',
+                  data:'data',          
+                  success: function(response) {
+                      // console.log(response);
+                      $('.leaveval').html(response);             
+                  },
+                  error: function(response) {
+                    // console.log(response);
+                  }
+              });
+          });			
+        </script>  
+
+
+        <script type="text/javascript">
+        /*PARSE DURATION DATA*/
+        $('.duration').on('input',function() {
+            var day = parseInt($('.duration').val());
+            var hour = 8;
+            $('.totalhour').val((day * hour ? day * hour : 0).toFixed(2));
+        });
+        </script>
+<script>
+  $(".Status").on("click", function(event){
+      event.preventDefault();
+      // console.log($(this).attr('data-value'));
+      $.ajax({
+          url: "approveLeaveStatus",
+          type:"POST",
+          data:
+          {
+              'employeeId': $(this).attr('data-employeeId'),
+              'lid': $(this).attr('data-id'),
+              'lvalue': $(this).attr('data-value'),
+              'duration': $(this).attr('data-duration'),
+              'type': $(this).attr('data-type')
+          },
+          success: function(response) {
+            // console.log(response);
+            $(".message").fadeIn('fast').delay(30000).fadeOut('fast').html(response);
+            window.setTimeout(function(){location.reload()}, 30000);
+          },
+          error: function(response) {
+            //console.error();
+          }
+      });
+  });           
+</script>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+                $(".leaveapp").click(function(e) {
+                    e.preventDefault(e);
+                    // Get the record's ID via attribute
+                    var iid = $(this).attr('data-id');
+                    $('#leaveapply').trigger("reset");
+                    $('#appmodel').modal('show');
+                    $.ajax({
+                        url: 'LeaveAppbyid?id=' + iid,
+                        method: 'GET',
+                        data: '',
+                        dataType: 'json',
+                    }).done(function(response) {
+                        // console.log(response);
+                        // Populate the form fields with the data returned from server
+                        $('#leaveapply').find('[name="id"]').val(response.leaveapplyvalue.id).end();
+                        $('#leaveapply').find('[name="chassisno"]').val(response.leaveapplyvalue.chassisno).end();
+                        $('#leaveapply').find('[name="applydate"]').val(response.leaveapplyvalue.apply_date).end();
+                        $('#leaveapply').find('[name="typeid"]').val(response.leaveapplyvalue.typeid).end();
+                        $('#leaveapply').find('[name="startdate"]').val(response.leaveapplyvalue.start_date).end();
+                        $('#leaveapply').find('[name="enddate"]').val(response.leaveapplyvalue.end_date).end();
+                        $('#leaveapply').find('[name="reason"]').val(response.leaveapplyvalue.reason).end();
+                        $('#leaveapply').find('[name="status"]').val(response.leaveapplyvalue.leave_status).end();
+
+                        if(response.leaveapplyvalue.leave_type == 'Half day') {
+                            $('#appmodel').find(':radio[name=type][value="Half Day"]').prop('checked', true).end();
+                            $('#hourAmount').show().end();
+                            $('#enddate').hide().end();
+                        } else if(response.leaveapplyvalue.leave_type == 'Full Day') {
+                            $('#appmodel').find(':radio[name=type][value="Full Day"]').prop('checked', true).end();
+                            $('#hourAmount').hide().end();
+                        } else if(response.leaveapplyvalue.leave_type == 'More than One day'){
+                            $('#appmodel').find(':radio[name=type][value="More than One day"]').prop('checked', true).end();
+                            $('#hourAmount').hide().end();
+                            $('#enddate').show().end();
+                        }
+
+                        $('#hourAmountVal').val(response.leaveapplyvalue.leave_duration).show().end();
+                    });
+                });
+            });
+        </script>                     
+<?php $this->load->view('backend/footer'); ?>
+
+   <script>
+      $(document).ready(function(){
+        $(window).scroll(function(){
+          if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+          } else {
+            $('.scrollup').fadeOut();
+          }
+        });
+        $('.scrollup').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 1000);
+          return false;
+        });
+      });
+    </script>
+    <script>
+      function myFunction() {
+        window.print();
+      }
+      function getTotal()
+      {
+        var amount = document.getElementById("tax_amount").value;
+        var fine   = document.getElementById("tax_fine").value;
+        var total = parseFloat(amount) + parseFloat(fine);
+        $('#tax_total').val(total);
+      }
+      function getvehicle()
+      {
+        var vehicle = document.getElementById("vehicle").value;
+        $('#vehicle_no').val(vehicle);
+      }
+    </script>
+ 
+    <script type="text/javascript">
+      jQuery(document).ready(function(){
+      });
+    </script>
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+    <script>
+      $(document).ready(function(){
+        $(window).scroll(function(){
+          if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+          } else {
+            $('.scrollup').fadeOut();
+          }
+        });
+
+        $('.scrollup').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 1000);
+          return false;
+        });
+      });
+    </script>
+    <!--print command-->
+    <script type="text/javascript">
+      function myFunction(){window.print();}
+    </script>
+<script>
+  $( function() {
+    $( "#fitdte" ).datepicker({ dateFormat: 'dd-M-yy' });
+  } );
+  $( function() {
+    $( "#permit_from" ).datepicker({ dateFormat: 'dd-M-yy' });
+  } );
+  $( function() {
+    $( "#permit_upto" ).datepicker({ dateFormat: 'dd-M-yy' });
+  } );
+  $( function() {
+    $( "#tax_from" ).datepicker({ dateFormat: 'dd-M-yy' });
+  } );
+  $( function() {
+    $( "#tax_upto" ).datepicker({ dateFormat: 'dd-M-yy' });
+  } );
+  </script>
+       <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	 
+<script type="text/javascript">
+$('.myform').each(function() {
+    $(this).validate({
+    submitHandler: function(form) {
+        var formval = form;
+        var url = $(form).attr('action');
+        var data = new FormData(formval);
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 60,
+            success: function (response) {
+                console.log(response);            
+               $(".message").fadeIn('fast').delay(3000).fadeOut('fast').html(response);
+			  
+			 
+			 $('#myModal').modal('show'); 
+              $('form').trigger("reset");
+            window.setTimeout(function(){location.reload()},3000);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+});
+});
+
+    </script> 
+
+</div></body></html>

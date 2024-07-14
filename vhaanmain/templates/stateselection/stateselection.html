@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/bootstrap-grid.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/all.css">
+    <link type="text/css" rel="stylesheet" href="/static/stateselection/components.css">
+    <script type="text/javascript" src="/static/stateselection/jquery.js.download"></script>
+    <script type="text/javascript" src="/static/stateselection/jquery-plugins.js.download"></script>
+    <script type="text/javascript" src="/static/stateselection/core.js.download"></script>
+    <script type="text/javascript" src="/static/stateselection/components.js.download"></script>
+    <script type="text/javascript" src="/static/stateselection/jsf.js.download"></script>
+    <title>Checkpost ~1~84</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/stateselection/bootstrap.min.js.download"></script>
+    <script type="text/javascript" src="/static/stateselection/commonvalidation.js.download"></script>
+</head>
+
+<body id="masterlaoyoutbody" aria-busy="false" style="position: relative;">
+    <form id="master_Layout_form" name="master_Layout_form" method="post"
+        action="/stateform" >
+        {% csrf_token %}
+        <input type="hidden" name="master_Layout_form" value="master_Layout_form">
+
+        <div class="container-fluid topbar-menu">
+            <div class="mar-bot">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6 left-position">
+                            <div class="marquee marquee-top mar-common-f">
+                                <div>
+                                    <span>Please pay tax in advance to avoid any last minute hassle.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 right-position top-pad-top">
+                            <ul class="top-menu ">
+                                <li>
+                                    <a href="#homeLink" title="Home">
+                                        <span class="glyphicon glyphicon-home"></span> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        title="skip-main-content">
+                                        <span class="glyphicon glyphicon-arrow-down"></span> Skip main content
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        title="Skip to navigation">
+                                        <span class="glyphicon glyphicon-arrow-down"></span> Skip navigation
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        title="A+">A<sup>+</sup></a></li>
+                                <li><a href="#"
+                                        title="A">A</a></li>
+                                <li><a href="#"
+                                        title="A-">A<sup>-</sup></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-background hide-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-9 col-8 mt-1 mb-1 ">
+                        <a><img id="j_idt14" src="/static/stateselection/checkpost-logo.png" class="img-fluid"
+                                alt="Check Post Logo">
+                        </a>
+                    </div>
+
+                    <div class="col-md-2 col-2 mt-1 mb-1 text-end">
+                        <a><img id="j_idt16" src="/static/stateselection/e-vahan-logo.png" class="img-fluid"
+                                alt="e-Vahan Logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- comment start from -->
+        <!-- here we can use own navbar -->
+        <!-- comment here -->
+        <div class="main_news_w">
+            <div class="news_w">
+                <div data-direction="left" class="marquee-with-options">
+                    <marquee scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();" direction="left"
+                        behavior="alternate">
+                        Verify the validity of the receipt by sending sms <font color="#ff83dc">VAHAN &lt;STATE CODE&gt;
+                            CP &lt;VEHICLE NO&gt; </font> to 7738299899 (e.g. <font color="#ff83dc">VAHAN XX CP
+                            XXXXXXXXXX</font>)
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <nav class=" navbar-default navigation-background" role="navigation">
+
+            <div class="navbar-collapse navigation-background-nav collapse in" id="navbar" aria-expanded="true"
+                style="padding: 10px;">
+                <a href="#" style="color:#FFFFFF; padding:5px;">Home</a> | <a style="color:#FFFFFF; padding:5px;"
+                    href="admin/logout">Logout</a>
+    
+               
+                <a style="color:#FFFFFF; padding:5px;"
+                    href=""></a>
+            </div>
+        </nav>
+        <div>
+            <div id="popup"
+                class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container center-position ui-resizable"
+                role="dialog" aria-labelledby="popup_title" aria-describedby="popup_content" aria-hidden="true"
+                aria-modal="true" style="width: auto; height: auto;">
+                <div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="popup_title"
+                        class="ui-dialog-title"></span></div>
+                <div class="ui-dialog-content ui-widget-content" id="popup_content" style="height: auto;">
+                    <div id="j_idt39" class="ui-messages ui-widget" aria-live="polite"></div><button id="j_idt40"
+                        name="j_idt40" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                        
+                        type="submit" role="button" aria-disabled="false"><span
+                            class="ui-button-text ui-c">Ok</span></button>
+                </div>
+                <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+                    style="z-index: 90;"></div>
+                <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+            </div>
+            <div class="container">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12 center-position">
+                            <h1 class="header-main">BORDER TAX PAYMENT</h1>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+
+                        <div class="ui-grid-col-12">
+                            <div id="publicsignup" class="ui-panel ui-widget ui-widget-content ui-corner-all"
+                                data-widget="widget_publicsignup">
+                                <div id="publicsignup_header"
+                                    class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span
+                                        class="ui-panel-title">Select State Name for Tax Payment</span></div>
+                                <div id="publicsignup_content" class="ui-panel-content ui-widget-content">
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-1 resp-blank-height"></div>
+                                        <div class="ui-grid-col-5">
+                                            <label class="field-label resp-label-section">
+                                                <h3 class="top-space">Select Visiting State Name</h3>
+                                            </label>
+                                            <div id="ib_state"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                aria-owns="ib_state_items" style="min-width: 164px;">
+                                                <select id="ib_state_input" style="height: 100%;width:100%;"
+                                                        name="ib_state_input" tabindex="-1" aria-hidden="true"
+                                                        >
+                                                        <option value="-1" data-escape="true">---Select State---
+                                                        </option>
+                                                        <!-- state list will be loaded using backend -->
+                                                        {% for state in states %}
+                                                        <option value="{{state}}">{{state}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-col-5">
+                                            <label class="field-label resp-label-section">
+                                                <h3 class="top-space">Service Name</h3>
+                                            </label>
+                                            <div id="operation_code"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                style="width:90%!important;" role="combobox" aria-haspopup="true"
+                                                aria-expanded="false" aria-owns="operation_code_items">
+                                                
+                                                <select style="height: 100%;width:100%;"
+                                                        id="operation_code_input" name="operation_code_input"
+                                                        tabindex="-1" aria-hidden="true">
+                                                        <option value="-1" data-escape="true">---Select Service Name---
+                                                        </option>
+                                                        <option value="5003" data-escape="true">VEHICLE TAX COLLECTION
+                                                            (OTHER STATE)</option>
+                                                    </select>
+                                                <div class="ui-selectonemenu-trigger ui-state-default ui-corner-right">
+                                                    <span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row top-space">
+                                        <div class="ui-grid-col-12 center-position"><button id="j_idt49" name="j_idt49"
+                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                
+                                                type="submit" role="button" aria-disabled="false"><span
+                                                    class="ui-button-icon-left ui-icon ui-c ui-icon-seek-next"></span><span
+                                                    class="ui-button-text ui-c">Go</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div id="j_idt53" class="ui-panel ui-widget ui-widget-content ui-corner-all"
+                                style="font-size: 11pt;" data-widget="widget_j_idt53">
+                                <div id="j_idt53_header"
+                                    class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span
+                                        class="ui-panel-title">Follow these steps to initiate tax payment...</span>
+                                </div>
+                                <div id="j_idt53_content" class="ui-panel-content ui-widget-content">
+                                    <ol>
+                                        <li> Select the state where you want to go from <font
+                                                class="dialog-highlight-text">'Select State'</font> combo box.</li>
+                                        <li> Select service Name from <font class="dialog-highlight-text">'Service Name'
+                                            </font> combo box.</li>
+                                        <ol type="i">
+                                            <li type="i"> Select <font class="dialog-highlight-text">'VEHICLE TAX
+                                                    COLLECTION (OTHER STATE)'</font> in case you do not have NCR permit.
+                                            </li>
+                                            <li type="i"> Select <font class="dialog-highlight-text">'VEHICLE TAX
+                                                    COLLECTION (NCR)'</font> in case you have NCR permit.</li>
+                                        </ol>
+                                        <li> Click <font class="dialog-highlight-text">'Go'</font> button to open the
+                                            vehicle details form.</li>
+                                        <li> Enter <font class="dialog-highlight-text">'Vehicle No.'</font> and click
+                                            <font class="dialog-highlight-text">'Get Details'</font> button to fill the
+                                            details.</li>
+                                        <li> Fill rest of the fields which are not filled automatically.</li>
+                                        <li> In case fields are not filled automatically then enter the details
+                                            manually.</li>
+                                        <li> Click <font class="dialog-highlight-text">'Calculate Tax'</font> button to
+                                            calculate the tax according to state notification.</li>
+                                        <li> Click <font class="dialog-highlight-text">'Pay Tax'</font> button to pay
+                                            the calculated tax.</li>
+                                        <li> It opens the payment gateway of VAHAN.</li>
+                                        <li> Choose payment gateway and click on <font class="dialog-highlight-text">
+                                                'Continue'</font> button.</li>
+                                        <li> And then follow the screen to pay tax.</li>
+                                        <li> After paying tax bank will redirect to the Checkpost application.</li>
+                                        <li> In case payment is success Checkpost application will generate the success
+                                            receipt.</li>
+                                        <li> Print the receipt.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="-8013023555980355000:-4073440410140233820" autocomplete="off">
+    </form>
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+    <div class="ui-dialog-docking-zone"></div>
+    <div id="ib_state_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay"
+        style="width: 408.953px; left: 219.312px; top: 335.766px; display: none;">
+        <div class="ui-selectonemenu-filter-container"><input
+                class="ui-selectonemenu-filter ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                id="ib_state_filter" name="ib_state_filter" type="text" autocomplete="off" role="textbox"
+                aria-disabled="false" aria-readonly="false"><span class="ui-icon ui-icon-search"></span></div>
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="ib_state_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="ib_state_10">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="---Select State---" tabindex="-1" role="option" id="ib_state_0">---Select State---</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="BIHAR"
+                    tabindex="-1" role="option" id="ib_state_1">BIHAR</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="CHHATTISGARH"
+                    tabindex="-1" role="option" id="ib_state_2">CHHATTISGARH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="GOA"
+                    tabindex="-1" role="option" id="ib_state_3">GOA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="GUJARAT"
+                    tabindex="-1" role="option" id="ib_state_4">GUJARAT</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="HARYANA"
+                    tabindex="-1" role="option" id="ib_state_5">HARYANA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="HIMACHAL PRADESH"
+                    tabindex="-1" role="option" id="ib_state_6">HIMACHAL PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="JAMMU &amp; KASHMIR" tabindex="-1" role="option" id="ib_state_7">JAMMU &amp; KASHMIR
+                </li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="JHARKHAND"
+                    tabindex="-1" role="option" id="ib_state_8">JHARKHAND</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="KARNATAKA"
+                    tabindex="-1" role="option" id="ib_state_9">KARNATAKA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="KERALA" tabindex="-1" role="option" id="ib_state_10">KERALA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MADHYA PRADESH"
+                    tabindex="-1" role="option" id="ib_state_11">MADHYA PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="MAHARASHTRA"
+                    tabindex="-1" role="option" id="ib_state_12">MAHARASHTRA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="ODISHA"
+                    tabindex="-1" role="option" id="ib_state_13">ODISHA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="PUNJAB"
+                    tabindex="-1" role="option" id="ib_state_14">PUNJAB</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="RAJASTHAN"
+                    tabindex="-1" role="option" id="ib_state_15">RAJASTHAN</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="SIKKIM"
+                    tabindex="-1" role="option" id="ib_state_16">SIKKIM</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="TAMIL NADU"
+                    tabindex="-1" role="option" id="ib_state_17">TAMIL NADU</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="TRIPURA"
+                    tabindex="-1" role="option" id="ib_state_18">TRIPURA</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UT of DNH and DD"
+                    tabindex="-1" role="option" id="ib_state_19">UT of DNH and DD</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UTTAR PRADESH"
+                    tabindex="-1" role="option" id="ib_state_20">UTTAR PRADESH</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="UTTRAKHAND"
+                    tabindex="-1" role="option" id="ib_state_21">UTTRAKHAND</li>
+            </ul>
+        </div>
+    </div>
+    <div id="j_idt57_blocker" class="ui-blockui ui-widget-overlay ui-helper-hidden"></div>
+    <div id="j_idt57" class="ui-blockui-content ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+        <img id="j_idt58" src="/static/stateselection/ajax_loader_blue.gif" alt=""></div>
+    <div id="operation_code_panel"
+        class="ui-selectonemenu-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow ui-input-overlay">
+        <div class="ui-selectonemenu-filter-container"><input
+                class="ui-selectonemenu-filter ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                id="operation_code_filter" name="operation_code_filter" type="text" autocomplete="off" role="textbox"
+                aria-disabled="false" aria-readonly="false"><span class="ui-icon ui-icon-search"></span></div>
+        <div class="ui-selectonemenu-items-wrapper" style="max-height:200px">
+            <ul id="operation_code_items"
+                class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"
+                role="listbox" aria-activedescendant="operation_code_0">
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all ui-state-highlight"
+                    data-label="---Select Service Name---" tabindex="-1" role="option" id="operation_code_0">---Select
+                    Service Name---</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="BILATERAL TAX COLLECTION OF EV VEHICLES" tabindex="-1" role="option"
+                    id="operation_code_1">BILATERAL TAX COLLECTION OF EV VEHICLES</li>
+                <li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all"
+                    data-label="VEHICLE TAX COLLECTION (OTHER STATE)" tabindex="-1" role="option" id="operation_code_2">
+                    VEHICLE TAX COLLECTION (OTHER STATE)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

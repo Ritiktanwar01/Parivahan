@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/static/myadmin/myadmin.css">
+    <link rel="stylesheet" href="/static/myadmin/myadmin_adduser.css">
+    <link rel="stylesheet" href="/static/myadmin/myadmin_edit.css">
+    <title>Admin</title>
+</head>
+
+<body onload="messegeHandler()">
+    <input type="hidden" name="" id="messege" value="{{messege}}">
+    <header>
+        <div class="brand-sm" id="brand">
+            <h3>Admin</h3>
+        </div>
+        <nav class="nav-bar-lg">
+            <div class="left-nav">
+                <button class="material-symbols-outlined mybtn" onclick="sidebarControl()">menu</button>
+            </div>
+            <ul>
+                <li style="font-size: 18px; text-transform:capitalize;">{{data}}</li>
+                <li><a href="logout" class="material-symbols-outlined">logout</a></li>
+                <li><a href="/"><span class="material-symbols-outlined">web_asset</span><span>Visit Site</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="sidebar-sm" id="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="/admin"><span class="material-symbols-outlined lg">speed</span><span class="namelabel-sm" id="namelabel-1">dashboard</span></a></li>
+                    <li><a href="/user_list"><span class="material-symbols-outlined lg">person</span><span class="namelabel-sm" id="namelabel-2">Users</span></a></li>
+                    <li><a href=""><span class="material-symbols-outlined lg">task</span><span class="namelabel-sm" id="namelabel-3">Assign Users</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-side-sec-cont">
+            <div class="top-nav-user-control">
+                <div class="flex-box-user-pass">
+                    <form action="/save_user_pass" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_uuid" value="">
+                        <div class="input-sect">
+                            <label for="username">Edit Username</label>
+                            <input type="text" name="username" value="{{userinfo.0.username}}">
+                        </div>
+                        <div class="input-sect">
+                            <label for="password">Edit Password</label>
+                            <input type="text" name="password" value="{{userinfo.0.password}}">
+                        </div>
+                        <button class="material-symbols-outlined btn" style="border:0;outline:none;margin-top:18px; color:skyblue;background-color:transparent;cursor:pointer;">save</button>
+                    </form>
+                    <form action="/delete_user" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_uuid" value="">
+                            <input type="hidden" name="username" value="{}">
+                        <button class="material-symbols-outlined btn" style="color: red; border:0;outline:none;margin-top:18px;background-color:transparent;cursor:pointer;">delete</button>
+                    </form>
+                </div>
+            </div>
+            <div class="user-tax-data">
+                <div class="user-list">
+                    <div class="container">
+                        <div class="ui-grid-table">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col">Id</div>
+                                <div class="ui-grid-col">Payment Date</div>
+                                <div class="ui-grid-col">Amount</div>
+                                <div class="ui-grid-col">Action</div>
+                            </div>
+                            <div class="ui-table-wrapper">
+                                <div class="ui-grid-row-data">
+                                <h3>Rajasthan</h3>
+                            </div>
+                                {% for tax in rajasthan %}
+                                <div class="ui-grid-row-data">
+                                    <div class="ui-grid-col-data">{{tax.id}}</div>
+                                    <div class="ui-grid-col-data">{{tax.create_date}}</div>
+                                    <div class="ui-grid-col-data" >
+                                        {{tax.total_tax_amount}}
+                                    </div>
+                                    <div class="ui-grid-col-data">
+                                        <a href="/rajasthan_recipt/{{tax.id}}"><span class="material-symbols-outlined" style="color: skyblue;">
+                                            print
+                                            </span></a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-sticky" style="background-color:skyblue;border-bottom: .5px solid grey;border-left: .5px solid grey;border-right: .5px solid grey;border-top: .5px solid grey;width:98%;margin:0 auto;height:53px;">
+                    <div class="ui-table-wrapper sticky">
+                        <div class="ui-grid-row-data">
+                           <div class="ui-grid-col-data">
+                            Tottal Tax Collected
+                           </div>
+                           <div class="ui-grid-col-data">
+                            Rs. {{tottal_tax_collected}}
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/static/myadmin/script/sidebar.js"></script>
+</body>
+
+</html>

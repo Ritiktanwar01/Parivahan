@@ -1,0 +1,647 @@
+
+<script>
+    function validateform() {
+        var vehicleno = document.forms["master_Layout_form"]["vehicleno"];
+        var chassisno = document.forms["master_Layout_form"]["chassisno"];
+        var ownername = document.forms["master_Layout_form"]["ownername"];
+        var mobile = document.forms["master_Layout_form"]["mobile"];
+        var from_state = document.forms["master_Layout_form"]["from_state"];
+        var VehicleType = document.forms["master_Layout_form"]["VehicleType"];
+        var VehicleClass = document.forms["master_Layout_form"]["VehicleClass"];
+        var seating_c = document.forms["master_Layout_form"]["seating_c"];
+        var ServiceType = document.forms["master_Layout_form"]["ServiceType"];
+        var TaxMode = document.forms["master_Layout_form"]["TaxMode"];
+        var border_entry = document.forms["master_Layout_form"]["border_entry"];
+        var tax_from = document.forms["master_Layout_form"]["tax_from"];
+        var tax_upto = document.forms["master_Layout_form"]["tax_upto"];
+        var PermitType = document.forms["master_Layout_form"]["PermitType"];
+
+        if (vehicleno.value == "") {
+            window.alert("Please enter vehicle number.");
+            vehicleno.focus();
+            return false;
+        }
+
+
+        if (chassisno.value == "") {
+            window.alert("Please enter chassis number.");
+            chassisno.focus();
+            return false;
+        }
+
+        if (ownername.value == "") {
+            window.alert("Please enter owner name.");
+            ownername.focus();
+            return false;
+        }
+
+        if (mobile.value == "") {
+            window.alert("Please enter mobile number.");
+            mobile.focus();
+            return false;
+        }
+
+        if (from_state.selectedIndex < 1) {
+            alert("Please select state.");
+            from_state.focus();
+            return false;
+        }
+
+        if (VehicleType.selectedIndex < 1) {
+            alert("Please select vehicle permit type.");
+            from_state.focus();
+            return false;
+        }
+        if (VehicleClass.selectedIndex < 1) {
+            alert("Please select vehicle class.");
+            VehicleClass.focus();
+            return false;
+        }
+
+        if (seating_c.value == "") {
+            window.alert("Please enter seating capacity.");
+            seating_c.focus();
+            return false;
+        }
+
+        if (TaxMode.selectedIndex < 1) {
+            alert("Please select service type.");
+            TaxMode.focus();
+            return false;
+        }
+
+        if (TaxMode.selectedIndex < 1) {
+            alert("Please select tax mode.");
+            TaxMode.focus();
+            return false;
+        }
+        if (border_entry.selectedIndex < 1) {
+            alert("Please select entery border.");
+            border_entry.focus();
+            return false;
+        }
+
+        if (tax_from.value == "") {
+            window.alert("Please enter tax from.");
+            tax_from.focus();
+            return false;
+        }
+
+        if (PermitType.value == "") {
+            window.alert("Please enter Permit type.");
+            PermitType.focus();
+            return false;
+        }
+
+        if (tax_upto.value == "") {
+            window.alert("Please enter tax upto.");
+            tax_from.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://vahan.parivahan.gov.in/checkpost/faces/public/payment/TaxCollectionMainOnline.xhtml# -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/theme3.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout1.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout3.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/grid-css.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/components.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/theme1.css">
+    <title>Checkpost ~135~8</title>
+
+</head>
+
+<body >
+
+
+
+    <nav class="navbar navbar-default navigation-background hide-header" role="navigation">
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 left_logo">
+                    <a class="top-space inline-section">
+                    </a>
+                </div>
+                <div class="ui-grid-col-8">
+                    <div class="heading_w center-position top-space">
+                        <div class="font-bold text-welcome-heading welcome-heading-size text-uppercase">ministry of road
+                            transport and highways</div>
+                        <div class="font-bold text-welcome-heading welcome-sub-heading-size">Government of India</div>
+                    </div>
+                </div>
+                <div class="ui-grid-col-2 right_logo">
+                    <a class="top-space inline-section">
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-nav" role="navigation" style="background:#2c5ca2;padding: 5px 30px; color:#ffffff;">
+        <a href="#" style="color:#ffffff">Home</a> | <a href="#" style="color:#ffffff">List</a> | <a
+            style="color:#FFFFFF; padding:5px;" href="#">Change State</a> | <a
+            style="color:#FFFFFF; padding:5px;" href="tax_history/haryana">All Booking</a> |
+        <a href="#" style="color:#ffffff">Logout</a>
+    </nav>
+    <div class="main_news_w">
+        <div class="news_w">
+            <div data-direction="left" class="marquee-with-options">
+                <marquee scrollamount="2" onMouseOver="this.stop();" onMouseOut="this.start();" direction="left"
+                    behavior="alternate">
+                    Verify the validity of the receipt by sending sms <font color="#ff83dc">VAHAN &lt;STATE CODE&gt; CP
+                        &lt;VEHICLE NO&gt; </font> to 7738299899 (e.g. <font color="#ff83dc">VAHAN XX CP XXXXXXXXXX
+                    </font>)
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container-fluid">
+            <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row top-space center-position contents-Space">
+                    <h1 class="header-main">Vehicle Tax Payment For,<span class="red"> HARYANA</span></h1>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-12 center-position contents-Space">
+                    </div>
+                </div>
+                <div class="ui-grid-row top-space">
+                    <div class="ui-grid-col-1 resp-blank-height"></div>
+                    <div class="ui-grid-col-10">
+                        <form method="post" action="haryanaform" id="leadform" class="myform"
+                            enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div id="hrtaxcollection"
+                                class="ui-panel ui-widget ui-widget-content ui-corner-all bottom-space"
+                                data-widget="widget_hrtaxcollection" aria-busy="false" style="position: relative;">
+                                <div id="hrtaxcollection_header"
+                                    class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span
+                                        class="ui-panel-title">Tax Payment Details</span></div>
+                                <div id="hrtaxcollection_content" class="ui-panel-content ui-widget-content">
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt44"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle
+                                                    No.</label>
+                                            </label><input name="vehicleno"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" type="text" id="vehicleno" value="" />
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12 top_mar1 mar-left5"><button id="j_idt48"
+                                                        name="j_idt48"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        title="Click to get owner and vehicle details from Vahan 4."
+                                                        type="button" role="button" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-arrowthick-1-s"></span><span
+                                                            class="ui-button-text ui-c">Get Details</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt50"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Chassis
+                                                    No.</label>
+                                            </label><input name="chassisno"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" type="text" id="chassisno" value="" />
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt54"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Owner
+                                                    Name</label>
+                                            </label> <input name="ownername" type="text" id="ownername"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt58"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Mobile
+                                                    No.</label>
+                                            </label><input name="mobile" type="text" id="mobile"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" value="" />
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt61"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">From
+                                                    State</label>
+                                            </label><select name="from_state" id="from_state"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);">
+                                                <option value="" selected="selected">------------Select
+                                                    State------------</option>
+                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                                                </option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                                <option value="Daman and Diu">Daman and Diu</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Lakshadweep">Lakshadweep</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Orissa">Orissa</option>
+                                                <option value="Pondicherry">Pondicherry</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttaranchal">Uttaranchal</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="West Bengal">West Bengal</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt67"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle Permit
+                                                    Type</label>
+                                            </label><select
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                data-val="true" data-val-required="Please specify Vehicle Type"
+                                                id="VehicleType" name="VehicleType" onChange="populateSecondMenu()">
+                                                <option value="" selected="selected">-- Select Vehicle Type --</option>
+                                                <option value="CONTRACT CARRIAGE/PASSENGER VEHICLES">CONTRACT
+                                                    CARRIAGE/PASSENGER VEHICLES</option>
+                                                <option value="PRIVATE SERVICE VEHICLE">PRIVATE SERVICE VEHICLE</option>
+                                                <option value="GOODS VEHICLE">GOODS VEHICLE</option>
+                                                <option value="STAGE CARRIAGE">STAGE CARRIAGE</option>
+                                                <option value="CONSTRUCTION EQUIPMENT VEHICLE">CONSTRUCTION EQUIPMENT
+                                                    VEHICLE</option>
+                                                <option value="TEMPORARY REGISTERED VEHICLE">TEMPORARY REGISTERED
+                                                    VEHICLE</option>
+                                            </select>
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt73"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Vehicle
+                                                    Class</label>
+                                            </label><select
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                data-val="true" data-val-required="Please specify Vehicle Class"
+                                                id="VehicleClass" name="VehicleClass">
+                                                <option value="" selected="selected">-- Select Vehicle Class --</option>
+                                                <option value="MOTOR CAB">MOTOR CAB</option>
+                                                <option value="MAXI CAB">MAXI CAB</option>
+                                                <option value="OMNI BUS">OMNI BUS</option>
+                                                <option value="BUS">BUS</option>
+                                                <option value="SLEEPER BUS">SLEEPER BUS</option>
+                                                <option value="LIGHT GOODS VEHICLE">LIGHT GOODS VEHICLE</option>
+                                                <option value="MEDIUM GOODS VEHICLE">MEDIUM GOODS VEHICLE</option>
+                                                <option value="HEAVY GOODS VEHICLE">HEAVY GOODS VEHICLE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="lbl_seat_cap"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Seating
+                                                    Capacity (Excluding Driver)</label>
+                                            </label><input name="seating_c" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" id="seating_c" value="" />
+                                        </div>
+
+                                        
+                                        <!-- end -->
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt81"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Service
+                                                    Type</label>
+                                            </label><select
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                data-val="true" data-val-required="Please specify Service Type"
+                                                id="ServiceType" name="ServiceType">
+                                                <option value="" selected="selected">-- Select Service Type --</option>
+                                                <option value="NOT APPLICABLE">NOT APPLICABLE</option>
+                                                <option value="ORDINARY">ORDINARY</option>
+                                                <option value="AIR CONDITIONED">AIR CONDITIONED</option>
+                                                <option value="DELUXE AIR CONDITIONED">DELUXE AIR CONDITIONED</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="lbl_distance"
+                                                    class="ui-outputlabel ui-widget">Distance(In KM)<font
+                                                        color="#FF0000"> *</font></label>
+                                            </label> <input name="distance" type="text"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+                                                onKeyUp="makeCaps(this);" id="distance" />
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt88"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Tax
+                                                    Mode</label>
+                                            </label><select
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                data-val="true" data-val-required="Please specify Tax Mode" id="TaxMode"
+                                                name="TaxMode">
+                                                <option value="">-- Select Tax Mode --</option>
+                                                <option value="DAYS">DAYS</option>
+                                                <option value="Monthly">MONTHLY</option>
+                                                <option value="Quarterly">QUARTERLY</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt93"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Border/Barrier
+                                                    District through Entering</label>
+                                            </label><select name="border_entry"
+                                                class="ui-selectonemenu ui-widget ui-state-default ui-corner-all"
+                                                id="border_entry">
+                                                <option value="">---Select District/Barrier---</option>
+                                                <option value="AMBALA">AMBALA</option>
+                                                <option value="BHIWANI">BHIWANI</option>
+                                                <option value="CHARKHI DADRI">CHARKHI DADRI</option>
+                                                <option value="FARIDABAD">FARIDABAD</option>
+                                                <option value="FATEHABAD">FATEHABAD</option>
+                                                <option value="GURUGRAM">GURUGRAM</option>
+                                                <option value="HISAR">HISAR</option>
+                                                <option value="JHAJJAR">JHAJJAR</option>
+                                                <option value="JIND">JIND</option>
+                                                <option value="KAITHAL">KAITHAL</option>
+                                                <option value="KARNAL">KARNAL</option>
+                                                <option value="KURUKSHETRA">KURUKSHETRA</option>
+                                                <option value="MAHENDRAGARH">MAHENDRAGARH</option>
+                                                <option value="NUH">NUH</option>
+                                                <option value="PALWAL">PALWAL</option>
+                                                <option value="PANCHKULA">PANCHKULA</option>
+                                                <option value="PANIPAT">PANIPAT</option>
+                                                <option value="REWARI">REWARI</option>
+                                                <option value="ROHTAK">ROHTAK</option>
+                                                <option value="SIRSA">SIRSA</option>
+                                                <option value="SONIPAT">SONIPAT</option>
+                                                <option value="YAMUNA NAGAR">YAMUNA NAGAR</option>
+                                            </select>
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt99"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Tax From
+                                                    Date</label>
+                                            </label><span id="cal_tax_from" class=""><input id="" name="entrydate"
+                                                    type="datetime-local"
+                                                    class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker"
+                                                    autocomplete="off" placeholder="DD-MM-YYYY HH:mm" role="textbox"
+                                                    aria-disabled="false" aria-readonly="false"></span>
+                                        </div>
+                                        <div class="ui-grid-col-3">
+                                            <label class="field-label resp-label-section"><label id="j_idt102"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Tax Upto
+                                                    Date</label>
+                                            </label><span id="cal_tax_to" class="ui-calendar"><input id=""
+                                                    name="outdate" type="datetime-local"
+                                                    class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker"
+                                                    autocomplete="off" placeholder="DD-MM-YYYY HH:mm" role="textbox"
+                                                    aria-disabled="false" aria-readonly="false"></span>
+                                        </div>
+                                    </div><br>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-12">
+                                            <div id="j_idt105" class="ui-datatable ui-widget">
+                                                <div class="ui-datatable-tablewrapper">
+                                                    <table role="grid">
+                                                        <thead id="j_idt105_head">
+                                                            <tr role="row">
+                                                                <th id="j_idt105:j_idt106" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Sl. No." scope="col"
+                                                                    style="width: 40px;"><span
+                                                                        class="ui-column-title">Sl. No.</span></th>
+                                                                <th id="j_idt105:j_idt108" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Particulars"
+                                                                    scope="col"><span
+                                                                        class="ui-column-title">Particulars</span></th>
+                                                                <th id="j_idt105:j_idt110" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Tax From"
+                                                                    scope="col"><span class="ui-column-title">Tax
+                                                                        From</span></th>
+                                                                <th id="j_idt105:j_idt112" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Tax Upto"
+                                                                    scope="col"><span class="ui-column-title">Tax
+                                                                        Upto</span></th>
+                                                                <th id="j_idt105:j_idt114" class="ui-state-default"
+                                                                    role="columnheader" aria-label="Amount" scope="col">
+                                                                    <span class="ui-column-title">Amount</span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="j_idt105_data"
+                                                            class="ui-datatable-data ui-widget-content">
+                                                            <tr class="ui-widget-content ui-datatable-empty-message">
+                                                                <td colspan="5">No records found.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-6">
+                                            <label class="field-label resp-label-section"><label id="j_idt117"
+                                                    class="ui-outputlabel ui-widget field-label-mandate">Total
+                                                    Amount</label>
+                                            </label><input id="total_amount" name="total_amount" type="text"
+                                                style="font-size: 15pt;font-weight: bold;"
+                                                class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                aria-disabled="true" role="textbox" aria-readonly="false">
+                                        </div>
+                                        <div class="ui-grid-col-6">
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12 top_mar1 mar-left5">
+                                                    <input type="button" style="padding:5px;"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        name="Calculate_Tax" id="Calculate_Tax" value="Calculate Tax">
+                                                    <button name="save"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        type="submit" role="button" aria-disabled="false"><span
+                                                            class="ui-button-icon-left ui-icon ui-c ui-icon-calculator"></span><span
+                                                            class="ui-button-text ui-c">Pay Tax</span></button>
+                                                    <input type="reset" style="padding:5px;"
+                                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                        name="Reset" id="Reset" value="Reset">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j_idt126_blocker"
+                                    class="ui-blockui ui-widget-overlay ui-helper-hidden ui-corner-all"></div>
+                                <div id="j_idt126"
+                                    class="ui-blockui-content ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow">
+                                    </div>
+                            </div>
+                            <div id="popup"
+                                class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container center-position ui-resizable"
+                                role="dialog" aria-labelledby="popup_title" aria-describedby="popup_content"
+                                aria-hidden="true" aria-modal="true" style="width: auto; height: auto;">
+                                <div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span
+                                        id="popup_title" class="ui-dialog-title"></span></div>
+                                <div class="ui-dialog-content ui-widget-content" id="popup_content"
+                                    style="height: auto;">
+                                    <div id="j_idt124" class="ui-messages ui-widget" aria-live="polite"></div><button
+                                        id="j_idt125" name="j_idt125"
+                                        class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                                        
+                                        type="submit" role="button" aria-disabled="false"><span
+                                            class="ui-button-text ui-c">Ok</span></button>
+                                </div>
+                                <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+                                    style="z-index: 90;"></div>
+                                <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+                            </div>
+                            <div id="ConfirmationDialog"
+                                class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container ui-draggable"
+                                role="dialog" aria-labelledby="ConfirmationDialog_title"
+                                aria-describedby="ConfirmationDialog_content" aria-hidden="true" aria-modal="true"
+                                style="width: 550px; height: auto;">
+                                <div
+                                    class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top ui-draggable-handle">
+                                    <span id="ConfirmationDialog_title" class="ui-dialog-title">Confirmation
+                                        Message...</span></div>
+                                <div class="ui-dialog-content ui-widget-content" id="ConfirmationDialog_content"
+                                    style="height: 260px;">
+                                    <table class="datatable-panel-100">
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="small-text-font-bold">Registration No</span></td>
+                                                <td><span class="small-text-font-bold">:</span></td>
+                                                <td><span class="small-text-font-bold"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Owner Name</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Chassis Number</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Tax From Date</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Tax To Date</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font-bold">Amount</span></td>
+                                                <td><span class="small-text-font-bold">:</span></td>
+                                                <td><span class="small-text-font-bold">/-</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="small-text-font">Payment Mode</span></td>
+                                                <td><span class="small-text-font">:</span></td>
+                                                <td><span class="small-text-font">ONLINE</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="ui-grid-row top-space bottom-space">
+                                        <div class="ui-grid-col-12 center-position"><button id="j_idt152"
+                                                name="j_idt152"
+                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                onClick="" type="submit" role="button" aria-disabled="false"><span
+                                                    class="ui-button-icon-left ui-icon ui-c ui-icon-check"></span><span
+                                                    class="ui-button-text ui-c">Confirm</span></button><button
+                                                id="j_idt153" name="j_idt153"
+                                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+                                                
+                                                type="submit" role="button" aria-disabled="false"><span
+                                                    class="ui-button-icon-left ui-icon ui-c ui-icon-close"></span><span
+                                                    class="ui-button-text ui-c">Cancel</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        var data1 = {
+            "CONTRACT CARRIAGE/PASSENGER VEHICLES": ["THREE WHEELER(PASSENGER)", "MOTOR CAB", "MAXI CAB", "BUS"],
+            "GOODS VEHICLE": ["LIGHT GOODS VEHICLE", "MEDIUM GOODS VEHICLE", "HEAVY GOODS VEHICLE"],
+            "TEMPORARY REGISTERED VEHICLESE": ["MOTOR CAB", "MAXI CAB", "BUS", "TEMPORARY REGISTERED VEHICLESE", "CHASSIS OF VEHICLES" ,"OTHERS"],
+            "CONSTRUCTION EQUIPMENT VEHICLE": ["CONSTRUCTION EQUIPMENT VEHICLE"],
+            "CONSTRUCTION EQUIPMENT VEHICLE": ["CONSTRUCTION EQUIPMENT VEHICLE"],
+            "STAGE CARRIAGE":[""]
+        };
+
+        // Function to populate the second menu based on the first menu selection
+        function populateSecondMenu() {
+            // Get the selected value from the first menu
+            var firstMenu = document.getElementById("VehicleType");
+            var selectedValue = firstMenu.options[firstMenu.selectedIndex].value;
+
+            // Get the second menu element
+            var secondMenu = document.getElementById("VehicleClass");
+
+            // Clear the second menu options
+            secondMenu.innerHTML = "<option value='0'>----SELECT VEHICLE CLASS-------</option>";
+
+            // Loop through the data and create new options for the second menu
+            for (var i = 0; i < data1[selectedValue].length; i++) {
+                var option = document.createElement("option");
+                option.value = data1[selectedValue][i];
+                option.text = data1[selectedValue][i];
+                secondMenu.appendChild(option);
+            }
+        }
+        populateSecondMenu();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/theme6.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout6.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/grid-css.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/primefaces.css">
+	<link type="text/css" rel="stylesheet" href="/static/allcss/layout1.css">
+    <style>
+        tr td{
+            color: black;
+        }
+    </style>
+    <title>Checkpost ~135~8</title>
+</head>
+
+<body onLoad="changeHashOnLoad();">
+
+
+
+    <nav class="navbar navbar-default navigation-background hide-header" role="navigation">
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 left_logo">
+                    <a class="top-space inline-section">
+                    </a>
+                </div>
+                <div class="ui-grid-col-8">
+                    <div class="heading_w center-position top-space">
+                        <div class="font-bold text-welcome-heading welcome-heading-size text-uppercase">ministry of road
+                            transport and highways</div>
+                        <div class="font-bold text-welcome-heading welcome-sub-heading-size">Government of India</div>
+                    </div>
+                </div>
+                <div class="ui-grid-col-2 right_logo">
+                    <a class="top-space inline-section">
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-nav" role="navigation" style="background:#2c5ca2;padding: 5px 30px; color:#ffffff;">
+        <a style="color:#FFFFFF; padding:5px;" href="#">Change State</a> | <a style="color:#FFFFFF; padding:5px;"
+            href="#">All Booking</a> |
+        <a href="#" style="color:#ffffff">Logout</a>
+        <a style="color:#FFFFFF; padding:5px;" href="#">
+    </nav>
+    <div class="main_news_w">
+        <div class="news_w">
+            <div data-direction="left" class="marquee-with-options">
+                <marquee scrollamount="2" onMouseOver="this.stop();" onMouseOut="this.start();" direction="left"
+                    behavior="alternate">
+                    Verify the validity of the receipt by sending sms <font color="#ff83dc">VAHAN &lt;STATE CODE&gt; CP
+                        &lt;VEHICLE NO&gt; </font> to 7738299899 (e.g. <font color="#ff83dc">VAHAN XX CP XXXXXXXXXX
+                    </font>)
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="message"></div>
+
+        <div id="thank-you-message"></div>
+        <div class="container-fluid">
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1 resp-blank-height"></div>
+                <div class="ui-grid-col-10">
+                    <div class="card card-outline-info data-table-card">
+
+                        <div class="card-body">
+
+
+                            <div class="table-responsive ">
+                                <table id="example23"
+                                    class="display nowrap table table-hover table-striped table-bordered"
+                                    cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Registration No</th>
+                                            <th>Chassis No</th>
+                                            <th>Owner Name</th>
+                                            <th>Mobile No</th>
+                                            <th colspan="2">Checkpost Name</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for data in data %}
+                                        <tr style="vertical-align:top">
+                                            <td>{{data.vehicleno}}<a target="_blank" href=""><abbr title="Reports"></a></td>
+                                            <td>{{data.chassisno}}</td>
+                                            <td>{{data.ownername}}</td>
+                                            <td>{{data.mobile}}</td>
+                                            <td colspan="1">{{data.from_state}}</td>
+                                            <td>{{data.total_tax_amount}}</td>
+                                            <td><a href="/{{site_url}}/{{data.id}}"><button>Print</button></a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

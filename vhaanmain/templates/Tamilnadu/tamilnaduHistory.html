@@ -1,0 +1,587 @@
+<script>
+    function myFunction() {
+        var x = document.getElementById("VehicleType").value;
+        if (x == "GOODS VEHICLE") {
+            document.getElementById("demo").innerHTML = "Gross Vehicle Weight(In Kg.) ";
+        } else {
+            document.getElementById("demo").innerHTML = "Seating Capacity(Exc Driver) ";
+        }
+    }
+
+    function clickfunction2() {
+        var d = document.getElementById("vehicleno").value
+        if (d != "") {
+            document.location = "http://balajiservice.xyz/hr/booking?vehicleno=" + d;
+        } else {
+            alert("Please enter vehicle number");
+        }
+    }
+</script>
+<script>
+    function validateform() {
+        var vehicleno = document.forms["master_Layout_form"]["vehicleno"];
+        var chassisno = document.forms["master_Layout_form"]["chassisno"];
+        var ownername = document.forms["master_Layout_form"]["ownername"];
+        var mobile = document.forms["master_Layout_form"]["mobile"];
+        var from_state = document.forms["master_Layout_form"]["from_state"];
+        var VehicleType = document.forms["master_Layout_form"]["VehicleType"];
+        var VehicleClass = document.forms["master_Layout_form"]["VehicleClass"];
+        var seating_c = document.forms["master_Layout_form"]["seating_c"];
+        var ServiceType = document.forms["master_Layout_form"]["ServiceType"];
+        var TaxMode = document.forms["master_Layout_form"]["TaxMode"];
+        var border_entry = document.forms["master_Layout_form"]["border_entry"];
+        var tax_from = document.forms["master_Layout_form"]["tax_from"];
+        var tax_upto = document.forms["master_Layout_form"]["tax_upto"];
+        var PermitType = document.forms["master_Layout_form"]["PermitType"];
+
+        if (vehicleno.value == "") {
+            window.alert("Please enter vehicle number.");
+            vehicleno.focus();
+            return false;
+        }
+
+
+        if (chassisno.value == "") {
+            window.alert("Please enter chassis number.");
+            chassisno.focus();
+            return false;
+        }
+
+        if (ownername.value == "") {
+            window.alert("Please enter owner name.");
+            ownername.focus();
+            return false;
+        }
+
+        if (mobile.value == "") {
+            window.alert("Please enter mobile number.");
+            mobile.focus();
+            return false;
+        }
+
+        if (from_state.selectedIndex < 1) {
+            alert("Please select state.");
+            from_state.focus();
+            return false;
+        }
+
+        if (VehicleType.selectedIndex < 1) {
+            alert("Please select vehicle permit type.");
+            from_state.focus();
+            return false;
+        }
+        if (VehicleClass.selectedIndex < 1) {
+            alert("Please select vehicle class.");
+            VehicleClass.focus();
+            return false;
+        }
+
+        if (seating_c.value == "") {
+            window.alert("Please enter seating capacity.");
+            seating_c.focus();
+            return false;
+        }
+
+        if (TaxMode.selectedIndex < 1) {
+            alert("Please select service type.");
+            TaxMode.focus();
+            return false;
+        }
+
+        if (TaxMode.selectedIndex < 1) {
+            alert("Please select tax mode.");
+            TaxMode.focus();
+            return false;
+        }
+        if (border_entry.selectedIndex < 1) {
+            alert("Please select entery border.");
+            border_entry.focus();
+            return false;
+        }
+
+        if (tax_from.value == "") {
+            window.alert("Please enter tax from.");
+            tax_from.focus();
+            return false;
+        }
+
+        if (PermitType.value == "") {
+            window.alert("Please enter Permit type.");
+            PermitType.focus();
+            return false;
+        }
+
+        if (tax_upto.value == "") {
+            window.alert("Please enter tax upto.");
+            tax_from.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://vahan.parivahan.gov.in/checkpost/faces/public/payment/TaxCollectionMainOnline.xhtml# -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/theme3.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout1.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/layout3.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/grid-css.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/components.css">
+
+    <script
+        type="text/javascript">if (window.PrimeFaces) { PrimeFaces.settings.locale = 'en_US'; PrimeFaces.settings.projectStage = 'Development'; }</script>
+    <title>Checkpost ~135~8</title>
+</head>
+
+<body onLoad="changeHashOnLoad();">
+
+
+
+    <nav class="navbar navbar-default navigation-background hide-header" role="navigation">
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 left_logo">
+                    <a class="top-space inline-section"><img id="j_idt12"
+                            src="http://balajiservice.xyz/hr/Checkpost _135_8_files/checkpost-logo.png?v=62b1a71806a8e"
+                            alt="Check Post Logo">
+                    </a>
+                </div>
+                <div class="ui-grid-col-8">
+                    <div class="heading_w center-position top-space"><img id="j_idt14"
+                            src="http://balajiservice.xyz/hr/Checkpost _135_8_files/emblem-logo.png?v=62b1a71806a97"
+                            class="emblem-logo" alt="State Emblem of India">
+                        <div class="font-bold text-welcome-heading welcome-heading-size text-uppercase">ministry of road
+                            transport and highways</div>
+                        <div class="font-bold text-welcome-heading welcome-sub-heading-size">Government of India</div>
+                    </div>
+                </div>
+                <div class="ui-grid-col-2 right_logo">
+                    <a class="top-space inline-section">
+                        <img id="j_idt16"
+                            src="http://balajiservice.xyz/hr/Checkpost _135_8_files/e-vahan-logo.png?v=62b1a71806a9e"
+                            alt="e-Vahan Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-nav" role="navigation" style="background:#2c5ca2;padding: 5px 30px; color:#ffffff;">
+        <a style="color:#FFFFFF; padding:5px;" href="">Change State</a> | <a
+            style="color:#FFFFFF; padding:5px;" href="">All Booking</a> |
+        <a href="" style="color:#ffffff">Logout</a>
+        <a style="color:#FFFFFF; padding:5px;"
+            href=""><?=$this->session->userdata('fullName')?></a>
+    </nav>
+    <div class="main_news_w">
+        <div class="news_w">
+            <div data-direction="left" class="marquee-with-options">
+                <marquee scrollamount="2" onMouseOver="this.stop();" onMouseOut="this.start();" direction="left"
+                    behavior="alternate">
+                    Verify the validity of the receipt by sending sms <font color="#ff83dc">VAHAN &lt;STATE CODE&gt; CP
+                        &lt;VEHICLE NO&gt; </font> to 7738299899 (e.g. <font color="#ff83dc">VAHAN XX CP XXXXXXXXXX
+                    </font>)
+                </marquee>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://balajiservice.xyz/hr/datetimepic/jquery.js?v=62b1a71806ae8"></script>
+    <script src="http://balajiservice.xyz/hr/datetimepic/build/jquery.datetimepicker.full.js?v=62b1a71806aef"></script>
+    <div class="">
+        <div class="message"></div>
+
+        <div id="thank-you-message">
+            <?php echo $this->session->flashdata('message_name'); ?>
+        </div>
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1 resp-blank-height"></div>
+                <div class="ui-grid-col-10">
+                    <div class="card card-outline-info data-table-card">
+
+                        <div class="card-body">
+
+
+                            <div class="table-responsive ">
+                                <table id="example23"
+                                    class="display nowrap table table-hover table-striped table-bordered"
+                                    cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr No</th>
+                                            <th>Registration No</th>
+                                            <th>Chassis No</th>
+                                            <th>Owner Name</th>
+                                            <th>Mobile No</th>
+                                            <th>Checkpost Name</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+									$n=1;
+									foreach($profile as $value):  ?>
+                                        <tr style="vertical-align:top">
+                                            <td>
+                                                <?php echo $n; ?>
+                                            </td>
+                                            <td><a target="_blank"
+                                                    href="<?php echo base_url(); ?>home/TamilNAduRecipt/<?php echo $value->id; ?>"><abbr
+                                                        title="Reports">
+                                                        <?php echo $value->vehicleno; ?></a></td>
+                                            <td>
+                                                <?php echo $value->chassisno; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $value->ownername; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $value->mobile; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $value->from_state; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $value->total_tax_amount; ?>
+                                            </td>
+                                        </tr>
+                                        <?php
+									$n++;
+									endforeach; ?>
+                                    </tbody>
+                                    <!-- <tfoot>
+                                    <tr>
+                                      <th>Sr No</th>
+                                      <th>PI No</th>
+                                      <th>PI Date</th>
+                                        <th>Client Name</th>
+									     <th>State Name</th>
+									     <th>User Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot> -->
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+
+                    $('.fetchLeaveTotal').on('click', function (e) {
+                        e.preventDefault();
+                        var selectedEmployeeID = $('.selectedEmployeeID').val();
+                        var leaveTypeID = $('.assignleave').val();
+                        //console.log(selectedEmployeeID, leaveTypeID);
+                        $.ajax({
+                            url: 'LeaveAssign?leaveID=' + leaveTypeID + '&employeeID=' + selectedEmployeeID,
+                            method: 'GET',
+                            data: '',
+                        }).done(function (response) {
+                            //console.log(response);
+                            $("#total").html(response);
+                        });
+                    });
+                });
+            </script>
+            <script>
+                /*DATETIME PICKER*/
+                $("#bbbSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    var typeid = $('.typeid').val();
+                    var datetime = $('.mydatetimepicker').val();
+                    var emid = $('.emid').val();
+                    //console.log(datetime);
+                    $.ajax({
+                        url: "GetemployeeGmLeave?year=" + datetime + "&typeid=" + typeid + "&emid=" + emid,
+                        type: "GET",
+                        dataType: '',
+                        data: 'data',
+                        success: function (response) {
+                            // console.log(response);
+                            $('.leaveval').html(response);
+                        },
+                        error: function (response) {
+                            // console.log(response);
+                        }
+                    });
+                });			
+            </script>
+
+
+            <script type="text/javascript">
+                /*PARSE DURATION DATA*/
+                $('.duration').on('input', function () {
+                    var day = parseInt($('.duration').val());
+                    var hour = 8;
+                    $('.totalhour').val((day * hour ? day * hour : 0).toFixed(2));
+                });
+            </script>
+            <script>
+                $(".Status").on("click", function (event) {
+                    event.preventDefault();
+                    // console.log($(this).attr('data-value'));
+                    $.ajax({
+                        url: "approveLeaveStatus",
+                        type: "POST",
+                        data:
+                        {
+                            'employeeId': $(this).attr('data-employeeId'),
+                            'lid': $(this).attr('data-id'),
+                            'lvalue': $(this).attr('data-value'),
+                            'duration': $(this).attr('data-duration'),
+                            'type': $(this).attr('data-type')
+                        },
+                        success: function (response) {
+                            // console.log(response);
+                            $(".message").fadeIn('fast').delay(30000).fadeOut('fast').html(response);
+                            window.setTimeout(function () { location.reload() }, 30000);
+                        },
+                        error: function (response) {
+                            //console.error();
+                        }
+                    });
+                });           
+            </script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".leaveapp").click(function (e) {
+                        e.preventDefault(e);
+                        // Get the record's ID via attribute
+                        var iid = $(this).attr('data-id');
+                        $('#leaveapply').trigger("reset");
+                        $('#appmodel').modal('show');
+                        $.ajax({
+                            url: 'LeaveAppbyid?id=' + iid,
+                            method: 'GET',
+                            data: '',
+                            dataType: 'json',
+                        }).done(function (response) {
+                            // console.log(response);
+                            // Populate the form fields with the data returned from server
+                            $('#leaveapply').find('[name="id"]').val(response.leaveapplyvalue.id).end();
+                            $('#leaveapply').find('[name="chassisno"]').val(response.leaveapplyvalue.chassisno).end();
+                            $('#leaveapply').find('[name="applydate"]').val(response.leaveapplyvalue.apply_date).end();
+                            $('#leaveapply').find('[name="typeid"]').val(response.leaveapplyvalue.typeid).end();
+                            $('#leaveapply').find('[name="startdate"]').val(response.leaveapplyvalue.start_date).end();
+                            $('#leaveapply').find('[name="enddate"]').val(response.leaveapplyvalue.end_date).end();
+                            $('#leaveapply').find('[name="reason"]').val(response.leaveapplyvalue.reason).end();
+                            $('#leaveapply').find('[name="status"]').val(response.leaveapplyvalue.leave_status).end();
+
+                            if (response.leaveapplyvalue.leave_type == 'Half day') {
+                                $('#appmodel').find(':radio[name=type][value="Half Day"]').prop('checked', true).end();
+                                $('#hourAmount').show().end();
+                                $('#enddate').hide().end();
+                            } else if (response.leaveapplyvalue.leave_type == 'Full Day') {
+                                $('#appmodel').find(':radio[name=type][value="Full Day"]').prop('checked', true).end();
+                                $('#hourAmount').hide().end();
+                            } else if (response.leaveapplyvalue.leave_type == 'More than One day') {
+                                $('#appmodel').find(':radio[name=type][value="More than One day"]').prop('checked', true).end();
+                                $('#hourAmount').hide().end();
+                                $('#enddate').show().end();
+                            }
+
+                            $('#hourAmountVal').val(response.leaveapplyvalue.leave_duration).show().end();
+                        });
+                    });
+                });
+            </script>
+            <?php $this->load->view('backend/footer'); ?>
+
+
+            <script>
+                $(function () {
+                    $("#fitdte").datepicker({ dateFormat: 'dd-M-yy' });
+                });
+                $(function () {
+                    $("#permit_from").datepicker({ dateFormat: 'dd-M-yy' });
+                });
+                $(function () {
+                    $("#permit_upto").datepicker({ dateFormat: 'dd-M-yy' });
+                });
+                $(function () {
+                    $("#tax_from").datepicker({ dateFormat: 'dd-M-yy' });
+                });
+                $(function () {
+                    $("#tax_upto").datepicker({ dateFormat: 'dd-M-yy' });
+                });
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("VehicleType").value;
+                    if (x == "GOODS VEHICLE") {
+                        document.getElementById("demo").innerHTML = "Gross Vehicle Weight(In Kg.) ";
+                    } else {
+                        document.getElementById("demo").innerHTML = "Seating Capacity(Exc Driver) ";
+                    }
+                }
+
+                function clickfunction2() {
+                    var d = document.getElementById("vehicleno").value
+                    if (d != "") {
+                        document.location = "http://balajiservice.xyz/hr/booking?vehicleno=" + d;
+                    } else {
+                        alert("Please enter vehicle number");
+                    }
+                }
+            </script>
+            <script>
+                function validateform() {
+                    var vehicleno = document.forms["master_Layout_form"]["vehicleno"];
+                    var chassisno = document.forms["master_Layout_form"]["chassisno"];
+                    var ownername = document.forms["master_Layout_form"]["ownername"];
+                    var mobile = document.forms["master_Layout_form"]["mobile"];
+                    var from_state = document.forms["master_Layout_form"]["from_state"];
+                    var VehicleType = document.forms["master_Layout_form"]["VehicleType"];
+                    var VehicleClass = document.forms["master_Layout_form"]["VehicleClass"];
+                    var seating_c = document.forms["master_Layout_form"]["seating_c"];
+                    var ServiceType = document.forms["master_Layout_form"]["ServiceType"];
+                    var TaxMode = document.forms["master_Layout_form"]["TaxMode"];
+                    var border_entry = document.forms["master_Layout_form"]["border_entry"];
+                    var tax_from = document.forms["master_Layout_form"]["tax_from"];
+                    var tax_upto = document.forms["master_Layout_form"]["tax_upto"];
+                    var PermitType = document.forms["master_Layout_form"]["PermitType"];
+
+                    if (vehicleno.value == "") {
+                        window.alert("Please enter vehicle number.");
+                        vehicleno.focus();
+                        return false;
+                    }
+
+
+                    if (chassisno.value == "") {
+                        window.alert("Please enter chassis number.");
+                        chassisno.focus();
+                        return false;
+                    }
+
+                    if (ownername.value == "") {
+                        window.alert("Please enter owner name.");
+                        ownername.focus();
+                        return false;
+                    }
+
+                    if (mobile.value == "") {
+                        window.alert("Please enter mobile number.");
+                        mobile.focus();
+                        return false;
+                    }
+
+                    if (from_state.selectedIndex < 1) {
+                        alert("Please select state.");
+                        from_state.focus();
+                        return false;
+                    }
+
+                    if (VehicleType.selectedIndex < 1) {
+                        alert("Please select vehicle permit type.");
+                        from_state.focus();
+                        return false;
+                    }
+                    if (VehicleClass.selectedIndex < 1) {
+                        alert("Please select vehicle class.");
+                        VehicleClass.focus();
+                        return false;
+                    }
+
+                    if (seating_c.value == "") {
+                        window.alert("Please enter seating capacity.");
+                        seating_c.focus();
+                        return false;
+                    }
+
+                    if (TaxMode.selectedIndex < 1) {
+                        alert("Please select service type.");
+                        TaxMode.focus();
+                        return false;
+                    }
+
+                    if (TaxMode.selectedIndex < 1) {
+                        alert("Please select tax mode.");
+                        TaxMode.focus();
+                        return false;
+                    }
+                    if (border_entry.selectedIndex < 1) {
+                        alert("Please select entery border.");
+                        border_entry.focus();
+                        return false;
+                    }
+
+                    if (tax_from.value == "") {
+                        window.alert("Please enter tax from.");
+                        tax_from.focus();
+                        return false;
+                    }
+
+                    if (PermitType.value == "") {
+                        window.alert("Please enter Permit type.");
+                        PermitType.focus();
+                        return false;
+                    }
+
+                    if (tax_upto.value == "") {
+                        window.alert("Please enter tax upto.");
+                        tax_from.focus();
+                        return false;
+                    }
+
+                    return true;
+                }
+
+            </script>
+
+
+            <script type="text/javascript">
+                $('.myform').each(function () {
+                    $(this).validate({
+                        submitHandler: function (form) {
+                            var formval = form;
+                            var url = $(form).attr('action');
+                            var data = new FormData(formval);
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: url,
+                                data: data,
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                timeout: 60,
+                                success: function (response) {
+                                    console.log(response);
+                                    $(".message").fadeIn('fast').delay(3000).fadeOut('fast').html(response);
+
+
+                                    $('#myModal').modal('show');
+                                    $('form').trigger("reset");
+                                    window.setTimeout(function () { location.reload() }, 3000);
+                                },
+                                error: function (e) {
+                                    console.log(e);
+                                }
+                            });
+                        }
+                    });
+                });
+
+            </script>
+
+        </div>
+</body>
+
+</html>

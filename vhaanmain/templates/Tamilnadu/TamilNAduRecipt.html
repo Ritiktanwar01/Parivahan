@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/filenew/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/filenew/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/filenew/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/filenew/bootstrap-grid.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/allcss/filenew/components.css">
+
+    <title>Online Tax Payment Portal</title>
+    <script type="text/javascript" src="/static/allcss/filenew/bootstrap.min.js.download"></script>
+    <style>
+    
+        @page {
+            size: auto;
+            margin: 2mm;
+        }
+
+        @media print {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                z-index: -1;
+                left: 250px;
+                top: 60px;
+                opacity: 0.5;
+                filter: alpha(opacity=50);
+            }
+        }
+
+        @media screen {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                image-orientation: 45deg flip;
+                font-size: 44px;
+                background-position-x: repeat-y !important;
+                z-index: -1;
+                opacity: 0.2;
+                filter: alpha(opacity=70);
+                left: 780px;
+                top: 90px;
+            }
+        }
+
+        #regn_date {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.2;
+            font-size: 20px;
+            filter: alpha(opacity=50);
+            /*                -webkit-transform: rotate(-45deg);
+                                -moz-transform: rotate(-45deg);*/
+        }
+
+        .border-un {
+            border-bottom: 1px #000 solid !important;
+            border-right: none !important;
+            border-left: none !important;
+        }
+
+        .ui-widget-content {
+            border: none !important;
+        }
+    </style>
+    <script>
+        function textRepeat() {
+            var str = document.getElementById("regn_number").value.toUpperCase() + " / " + document.getElementById("payment_date").value.toUpperCase() + ", ";
+            document.getElementById("regn_date").innerHTML = str.repeat(40);
+        }
+    </script>
+</head>
+
+<body id="receipt_body" onload="textRepeat(),numberToText(),print()"> 
+    <div class="watermark">
+        <img id="j_idt9"
+            src="/static/allcss/files/TN-LOGO.png" alt="">
+    </div>
+        <input type="hidden" name="formPrint" value="formPrint">
+
+        <div class="center-position"><button id="j_idt12" name="j_idt12"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                 type="submit"
+                role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-arrowreturnthick-1-w"></span><span
+                    class="ui-button-text ui-c">Back</span></button><button id="j_idt13" name="j_idt13"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none ui-state-focus"
+                onclick={window.print()}
+                type="submit" role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-print"></span><span
+                    class="ui-button-text ui-c">Print</span></button>
+        </div>
+        <div class="table-responsive" style="margin-left: 30px;margin-right: 10px;margin-top: 10px;">
+            <div id="j_idt15" class="ui-outputpanel ui-widget"><input id="regn_number" type="hidden" name="regn_number"
+                    value="{{data.vehicleno}}"><input id="payment_date" type="hidden" name="payment_date"
+                    value="{{data.create_date}}">
+                <p id="regn_date">{{data.vehicleno}}</p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <tbody>
+                        <tr valign="top">
+                            <td width="17%"></td>
+                            <td width="61%" align="center">
+                                <div
+                                    style="font-size:18px; font-weight:bold; color:#000000;text-decoration:underline; padding-right:15px;">
+                                    GOVERNMENT OF TAMIL NADU</div>
+                                <div style="font-weight: bold;font-size: 12pt;">Department of Transport</div>
+                                <div style="font-weight: bold;font-size: 11pt;">Checkpost Tax e-Receipt( Single Journey
+                                    )</div>
+                                <div style="font-weight: bold;font-size: 11pt;">(One Round Trip Only)</div>
+                            </td>
+                            <td width="22%" rowspan="2" align="left" style="margin-right: 50px;"><span
+                                    id="j_idt17"><img src="/media/qrcode/tamilnadu/{{qr_code}}.png" style="width:140px; height:140px;" /></span></td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="2">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="17%" class="row-p"><label>Registration No.</label></td>
+                                            <td width="76%" class="row-p"><span id="regn_no"
+                                                    style="font-weight: bold; text-transform:uppercase;">: {{data.vehicleno}}</span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" class="row-p"><label>Receipt No.</label></td>
+                                            <td width="76%" class="row-p" style="font-weight:bold; text-transform:uppercase;">:{{data.recipt_no}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" class="row-p"><label>Payment Date</label></td>
+                                            <td width="76%" class="row-p" style="text-transform:uppercase;">: {{data.create_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" class="row-p"><label>Owner Name</label></td>
+                                            <td width="76%" class="row-p" style="text-transform:uppercase;">:{{data.ownername}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                    style="padding-top:10px; margin-left:-6.8px;">
+                                    <tbody>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Chassis No.</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.chassisno}}</td>
+                                            <td width="15%" class="row-p"><label>Tax Mode</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.TaxMode}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Vehilce Type</label></td>
+                                            <td width="35%" class="row-p" id="VehicleType" style="text-transform:uppercase;">
+                                                :{{data.VehicleType}}</td>
+                                            <td width="15%" class="row-p"><label>Vehicle Class</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.VehicleClass}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Mobile No.</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.mobile}}</td>
+                                            <td width="15%" class="row-p"><label>Checkpost Name</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.checkpost_name}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label id="lbl_seat_cap"></label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">:{{data.txt_seat_cap}}</td>
+                                            <td width="15%" class="row-p"><label id="lbl_sleeper_cap"></label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">:{{data.txt_sleeper_cap}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Bank Ref. No.</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: CPAAKWW336</td>
+                                            <td width="15%" class="row-p"><label>Payment Mode</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.TaxMode}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Permit Number</label></td>
+                                            <td width="35%" class="row-p">: </td>
+                                            <td width="15%" class="row-p"><label>Permit Validity</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.permit_upto_input}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Fitness Validity</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.fitness_valid_input}}</td>
+                                            <td width="15%" class="row-p"><label>Insurance Validity</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.ins_validity_input}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>PUCC Validity</label></td>
+                                            <td width="35%" class="row-p">:</td>
+                                            <td width="15%" class="row-p"></td>
+                                            <td width="35%" class="row-p"> </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"></td>
+                                            <td width="35%" class="row-p"></td>
+                                            <td width="15%" class="row-p"><label>Permit Type</label></td>
+                                            <td width="35%" class="row-p" style="text-transform:uppercase;">: {{data.PermitType}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"></td>
+                                            <td width="35%" class="row-p"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="row-p">
+                                <div>
+                                    <div class="ui-grid-responsive">
+                                        <table width="99%" border="0" cellspacing="0"
+                                            style="border-top: 1px #000 solid;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                            cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="64%" style="font-weight:bold;">Particular</td>
+                                                    <td width="12%" style="font-weight:bold;">Fees/Tax</td>
+                                                    <td width="12%" style="font-weight:bold;">Fine</td>
+                                                    <td width="12%" style="font-weight:bold;">Total</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div id="j_idt114" class="ui-datalist ui-widget">
+                                            <div id="j_idt114_content" class="ui-datalist-content ui-widget-content">
+                                                <ul id="j_idt114_list" class="ui-datalist-data">
+                                                    <li class="ui-datalist-item" id="mvFee">
+                                                        <table width="99%" border="1" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody>
+                                                                <input type="hidden" id="taxFromInpt" value="{{data.cal_tax_from_input}}"/>
+                                                                <input type="hidden" id="taxToInpt" value="{{data.cal_tax_to_input}}" />
+                                                                <tr>
+                                                                    <td width="64%">MV Tax(
+                                                                        <span id="dateFromValue"></span> TO  <span id="dateToValue"></span>)</td>
+                                                                    <td width="12%" style="text-align: right;" id="mvfeeMain">{{data.mv_tax}}
+                                                                    </td>
+                                                                    <td width="12%" style="text-align: right;">0</td>
+                                                                    <td width="12%" style="text-align: right;">{{data.mv_tax}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                    <li class="ui-datalist-item" id="welfareFee">
+                                                        <table width="99%" border="1" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="64%">Welfare Tax</td>
+                                                                    <td width="12%" style="text-align: right;" id="welfareFeemain">{{data.welfaretax}}
+                                                                    </td>
+                                                                    <td width="12%" style="text-align: right;">0</td>
+                                                                    <td width="12%" style="text-align: right;">{{data.welfaretax}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                    <li class="ui-datalist-item" id="userFee">
+                                                        <table width="99%" border="1" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="64%">Service Charge/User</td>
+                                                                    <td width="12%" style="text-align: right;" id="userChageMain">{{data.serviceusercharge}}
+                                                                    </td>
+                                                                    <td width="12%" style="text-align: right;">0</td>
+                                                                    <td width="12%" style="text-align: right;">{{data.serviceusercharge}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                    <li class="ui-datalist-item" id="permitFee">
+                                                        <table width="99%" border="1" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="64%">Permit Fee</td>
+                                                                    <td width="12%" style="text-align: right;" id="permitfeeMain">{{data.permitfree}}
+                                                                    </td>
+                                                                    <td width="12%" style="text-align: right;">0</td>
+                                                                    <td width="12%" style="text-align: right;">{{data.permitfree}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <div style="width:8px; height:8px;"></div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-weight: bold;">Grand Total : </span><img id="j_idt118"
+                                    src="/static/allcss/filenew/rupees_sign.png" alt="" width="10px"
+                                    height="10px"><span id="numberttl">{{data.total_tax_amount}}</span> /- (<span style="font-size:14px;text-transform:uppercase;">{{data.total_amt_text}}</span>)
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-weight: bold;">Note :</span><br><span
+                                    style="font-style: italic;font-weight: bold;">Terms and Conditions:</span><br><span
+                                    style="font-style: italic;">1) This is a computer generated printout and no
+                                    signature is required.</span><br><span style="font-style: italic;">2) Should not
+                                    carry unlawful/unaccompanied goods.</span><br><span style="font-style: italic;">3)
+                                    If any false information/discrepancies are found in later, necessary criminal action
+                                    will be taken against vehicle owner/driver. </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="float: right;"><span style="font-size: 12pt;height: 35px;">Generated By<br>(N
+                        BALAKRISHNAN)</span>
+                </div>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="8784258265757118678:-7705166830956008050" autocomplete="off">
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+    <!-- my script-->
+    <script>
+        function changeLabel(){
+            let fieldValue = document.getElementById('VehicleType').innerHTML;
+            let seat_cap_Label = document.getElementById('lbl_seat_cap');
+            let txt_sleeper_cap_Label = document.getElementById('lbl_sleeper_cap');
+            if (fieldValue == "CONTRACT CARRIAGE/PASSENGER VEHICLES"){
+                seat_cap_Label.innerHTML = "Seating Capacity (Including Driver)";
+                txt_sleeper_cap_Label.innerHTML = "Sleeper Capacity"
+            }else{
+                seat_cap_Label.innerHTML = "Gross Weight";
+                txt_sleeper_cap_Label.innerHTML = "Net Weight"
+            }
+        }
+        changeLabel();
+    </script>
+    <script>
+        let permitFeeRow = document.getElementById("permitFee");
+        let userFeeRow = document.getElementById("userFee");
+        let welfareFeeRow = document.getElementById("welfareFee");
+        let mvFeeRow = document.getElementById("mvFee");
+        // getting values of given tax rows
+        let permitfeeVal = parseInt(document.getElementById("permitfeeMain").innerHTML);           
+        let MVfeeVal = parseInt(document.getElementById("mvfeeMain").innerHTML);           
+        let UserfeeVal = parseInt(document.getElementById("userChageMain").innerHTML);           
+        let WelfarefeeVal = parseInt(document.getElementById("welfareFeemain").innerHTML);
+        
+        function check_1(){
+               if (WelfarefeeVal == 0){
+                   welfareFeeRow.style.display = "none";
+               }else{
+                   welfareFeeRow.style.display = "";
+               };
+               if (MVfeeVal == 0){
+                   mvFeeRow.style.display = "none";
+               }else{
+                   mvFeeRow.style.display = "";
+               };
+               if (UserfeeVal == 0){
+                   userFeeRow.style.display = "none";
+               }else{
+                   userFeeRow.style.display = "";
+               };
+               if (permitfeeVal == 0){
+                   permitFeeRow.style.display = "none";
+               }else{
+                   permitFeeRow.style.display = "";
+               };
+               
+        }
+            check_1();
+    </script>
+    <script>
+        function numberToText() {
+        let num = document.getElementById('numberttl').innerHTML;
+  // Define the arrays of words for different ranges
+  let ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+              "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", 
+              "seventeen", "eighteen", "nineteen"];
+  let tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+  let bigs = ["", "thousand", "million", "billion", "trillion"];
+
+  // Handle negative numbers
+  if (num < 0) {
+    return "negative " + numberToText(-num);
+  }
+
+  // Handle zero
+  if (num == 0) {
+    return "zero";
+  }
+
+  // Convert the number to a string and reverse it
+  let numStr = num.toString().split("").reverse().join("");
+
+  // Split the number into groups of three digits
+  let groups = [];
+  for (let i = 0; i < numStr.length; i += 3) {
+    groups.push(numStr.slice(i, i + 3));
+  }
+
+  // Convert each group to words and add the big suffix
+  let words = [];
+  for (let j = 0; j < groups.length; j++) {
+    let group = groups[j];
+    let groupWords = [];
+
+    // Handle the hundreds digit
+    if (group[2]) {
+      groupWords.push(ones[parseInt(group[2])] + " hundred");
+    }
+
+    // Handle the tens and ones digits
+    if (group[1]) {
+      if (group[1] == "1") {
+        // Use the ones array for numbers from 10 to 19
+        groupWords.push(ones[parseInt(group[1] + group[0])]);
+      } else {
+        // Use the tens array for the tens digit
+        groupWords.push(tens[parseInt(group[1])]);
+        if (group[0] != "0") {
+          // Use the ones array for the ones digit
+          groupWords.push(ones[parseInt(group[0])]);
+        }
+      }
+    } else if (group[0] != "0") {
+      // Use the ones array for numbers from 1 to 9
+      groupWords.push(ones[parseInt(group[0])]);
+    }
+
+    // Add the big suffix if the group is not zero
+    if (groupWords.length > 0) {
+      groupWords.push(bigs[j]);
+    }
+
+    // Join the group words with spaces and add them to the words array
+    words.push(groupWords.join(" "));
+  }
+  let wordjoin = words.reverse().join(" ")
+
+  // Reverse the words array and join it with spaces
+ document.getElementById('numberText').innerHTML = wordjoin;
+}
+    </script>
+    <script>
+    // to get date time for  from  section
+            function datetimeINputFrom(){
+            let dateFromInput = document.getElementById("taxFromInpt").value;
+            let dateToInput = document.getElementById("taxToInpt").value;
+            let showdateFrom = document.getElementById("dateFromValue");
+            let showDateTo = document.getElementById("dateToValue");
+            let monthName = ""
+               let date =  dateFromInput.slice(8);
+               let month = dateFromInput.slice(5,-3);
+               let year = dateFromInput.slice(0,-6);
+               if (month == "01"){
+                monthName = "JAN"
+            }else if(month =="02"){
+                monthName = "FEB"
+            }else if (month == "03"){
+                monthName = "MAR"
+            }else if(month == "04"){
+                monthName = "APR"
+            }else if(month == "05"){
+                monthName = "MAY"
+            }else if (month == "06"){
+                monthName = "JUN"
+            }else if(month == "07"){
+                monthName = "JUL"
+            }else if (month == "08"){
+                monthName = "AUG"
+            }else if (month == "09"){
+                monthName = "SEP"
+            }else if(month == "10"){
+                monthName = "OCT"
+            }else if (month =="11"){
+                monthName = "NOV"
+            }else if(month == "12"){
+                monthName = "DEC"
+            }else{
+                alert("invalid month")
+            }
+             showdateFrom.innerHTML = date +"-" + monthName+"-" + year
+            }
+            datetimeINputFrom();
+            
+            // to get date time for to section
+            function datetimeINputTo(){
+            let dateToInput = document.getElementById("taxToInpt").value;
+            let showDateTo = document.getElementById("dateToValue");
+            let monthName = ""
+               let date =  dateToInput.slice(8);
+               let month = dateToInput.slice(5,-3);
+               let year = dateToInput.slice(0,-6);
+               if (month == "01"){
+                monthName = "JAN"
+            }else if(month =="02"){
+                monthName = "FEB"
+            }else if (month == "03"){
+                monthName = "MAR"
+            }else if(month == "04"){
+                monthName = "APR"
+            }else if(month == "05"){
+                monthName = "MAY"
+            }else if (month == "06"){
+                monthName = "JUN"
+            }else if(month == "07"){
+                monthName = "JUL"
+            }else if (month == "08"){
+                monthName = "AUG"
+            }else if (month == "09"){
+                monthName = "SEP"
+            }else if(month == "10"){
+                monthName = "OCT"
+            }else if (month =="11"){
+                monthName = "NOV"
+            }else if(month == "12"){
+                monthName = "DEC"
+            }else{
+                alert("invalid month")
+            }
+             showDateTo.innerHTML = date +"-" + monthName+"-" + year
+            }
+            datetimeINputTo();
+    </script>
+</body>
+
+</html>

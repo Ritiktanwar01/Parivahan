@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<head id="j_idt3">
+    <link type="text/css" rel="stylesheet" href="/static/gujrat_odc_recipt_css/theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/gujrat_odc_recipt_css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="/static/gujrat_odc_recipt_css/layout.css">
+    <link type="text/css" rel="stylesheet" href="/static/gujrat_odc_recipt_css/bootstrap-grid.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/gujrat_odc_recipt_css/components.css">
+    <title>Online Tax Payment Portal</title>
+    <style>
+        @page {
+            size: auto;
+            margin: 2mm;
+        }
+
+        @media print {
+            body{
+                padding-top: 22px;
+            }
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                z-index: -1;
+                left: 200px;
+                top: 65px;
+                opacity: 0.15;
+                filter: alpha(opacity=50);
+            }
+        }
+
+        @media screen {
+            .watermark {
+                color: #d0d0d0;
+                position: absolute;
+                image-orientation: 45deg flip;
+                font-size: 44px;
+                background-position-x: repeat-y !important;
+                z-index: -1;
+                opacity: 0.15;
+                filter: alpha(opacity=10);
+                left: 750px;
+                top: 100px;
+            }
+        }
+
+        #regn_date {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.2;
+            font-size: 20px;
+            filter: alpha(opacity=50);
+            /*                -webkit-transform: rotate(-45deg);
+                                -moz-transform: rotate(-45deg);*/
+        }
+
+        .border-un {
+            border-bottom: 1px #000 solid !important;
+            border-right: none !important;
+            border-left: none !important;
+        }
+
+        .ui-widget-content {
+            border: none !important;
+        }
+        table {
+            border-collapse:separate;
+            border-spacing: 0 .5em;
+            }
+            .border-ls-m tr{
+                border: 0;
+            }
+            .border-ls-m tr td{
+                border: 0;
+            }
+    </style>
+    <script>
+        function textRepeat() {
+            var str = document.getElementById("regn_number").value + " / " + document.getElementById("payment_date").value + ", ";
+            document.getElementById("regn_date").innerHTML = str.repeat(88);
+        }
+    </script>
+</head>
+
+<body onload="textRepeat()">
+    <div class="watermark">
+        <img id="j_idt11"
+            src="/static/gujrat_odc_recipt_css/GJ-LOGO.png" alt="">
+    </div>
+    <form id="formPrint" name="formPrint" method="post"
+        action=""
+        enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="formPrint" value="formPrint">
+
+        <div class="center-position"><button id="j_idt14" name="j_idt14"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                
+                type="button" role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-arrowreturnthick-1-w"></span><span
+                    class="ui-button-text ui-c">Back</span></button><button id="j_idt15" name="j_idt15"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left display-none"
+                
+                type="button" onclick="print()" role="button" aria-disabled="false"><span
+                    class="ui-button-icon-left ui-icon ui-c ui-icon-print"></span><span
+                    class="ui-button-text ui-c">Print</span></button>
+        </div>
+        <div class="table-responsive" style="margin-left: 30px;margin-right: 10px;margin-top: 10px;">
+            <div id="j_idt17" class="ui-outputpanel ui-widget"><input id="regn_number" type="hidden" name="regn_number"
+                    value="{{data.vehicle}}"><input id="payment_date" type="hidden" name="payment_date"
+                    value="{{data.payment_date}}">
+                <p id="regn_date"></p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <tbody>
+                        <tr valign="top">
+                            <td width="18%"></td>
+                            <td width="61%" align="center">
+                                <div
+                                    style="font-size:18px; font-weight:bold; color:#000000;text-decoration:underline; padding-right:15px;">
+                                    GOVERNMENT OF GUJARAT</div>
+                                <div style="font-weight: bold;font-size: 12pt;">Department of Transport</div>
+                                <div style="font-weight: bold;font-size: 11pt;">e-Receipt for ODC Exemption Fee</div>
+                            </td>
+                            <td width="22%" rowspan="2" align="left" style="margin-right: 50px;"><span
+                                    id="j_idt19"><img src="/media/qrcode/gujrat_odc/{{qrcode}}.png" alt="" width="140" height="140"></span></td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="2">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="18%" class="row-p"><label>Registration No. </label></td>
+                                            <td width="82%" class="row-p"><span id="regn_no"
+                                                    style="font-weight: bold;">: {{data.vehicle}}</span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="18%" class="row-p"><label>Receipt No</label></td>
+                                            <td width="82%" class="row-p">: GJT2403176152568 </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="18%" class="row-p"><label>Payment Date</label></td>
+                                            <td width="82%" class="row-p">: {{data.payment_date}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="18%" class="row-p"><label>Owner Name</label></td>
+                                            <td width="82%" class="row-p">: {{data.owner_name}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                    style="padding-top:5px;">
+                                    <tbody>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Chassis No.</label></td>
+                                            <td width="22%" class="row-p">: {{data.chassis}} </td>
+                                            <td width="30%" class="row-p"><label>Bank Ref No.</label></td>
+                                            <td width="33%" class="row-p">: 407740277084 </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Vehilce Type</label></td>
+                                            <td width="22%" class="row-p">: {{data.vehicle_type}} </td>
+                                            <td width="30%" class="row-p"><label>Vehicle Class</label></td>
+                                            <td width="33" class="row-p">:{{data.vehicle_class}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Mobile No.</label></td>
+                                            <td width="22%" class="row-p">: {{data.mobileno}}</td>
+                                            <td width="30%" class="row-p"><label>Overdimension Type</label></td>
+                                            <td width="33%" class="row-p">: {{data.over_dimension_input}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Body Type</label></td>
+                                            <td width="22%" class="row-p">: {{data.body_type}} </td>
+                                            <td width="30%" class="row-p"><label>Nature Of Goods</label></td>
+                                            <td width="33%" class="row-p">: {{data.goods_nature_input}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>GVW</label></td>
+                                            <td width="22%" class="row-p">: {{data.gross_wt}}Kg. </td>
+                                            <td width="30%" class="row-p"><label>Vehicle Total Weight with
+                                                    Consignment</label></td>
+                                            <td width="33%" class="row-p">: 18500Kg.</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>From State</label></td>
+                                            <td width="22%" class="row-p">: {{data.state_from}} </td>
+                                            <td width="30%" class="row-p"><label>From District</label></td>
+                                            <td width="33%" class="row-p">: {{data.district_input}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>To State</label></td>
+                                            <td width="22%" class="row-p">: {{data.state_to}} </td>
+                                            <td width="30%" class="row-p"><label>To District</label></td>
+                                            <td width="33%" class="row-p">: {{data.to_district_input}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>LR No.</label></td>
+                                            <td width="22%" class="row-p">: {{data.lr_no}}</td>
+                                            <td width="30%" class="row-p"><label>LR Date</label></td>
+                                            <td width="33%" class="row-p">: {{data.lr_date}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Insurance Validity</label></td>
+                                            <td width="22%" class="row-p">: {{data.insurance_val}} </td>
+                                            <td width="30%" class="row-p"><label>Fitness Validity</label></td>
+                                            <td width="33%" class="row-p">: {{data.fitness_val}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>PUCC Validity</label></td>
+                                            <td width="22%" class="row-p">: {{data.pucc_val}} </td>
+                                            <td width="30%" class="row-p"><label>Parmit Validity</label></td>
+                                            <td width="33%" class="row-p">: {{data.permit_val}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Permit Type</label></td>
+                                            <td width="22%" class="row-p">: {{data.permit_type_input}} </td>
+                                            <td width="30%" class="row-p"><label>Permit/Authorization No.</label></td>
+                                            <td width="33%" class="row-p">: {{data.txt_permit_no}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>Payment Mode</label></td>
+                                            <td width="22%" class="row-p">: ONLINE</td>
+                                            <td width="30%" class="row-p"><label>Goods Description</label></td>
+                                            <td width="33%" class="row-p">: {{data.goodd_description_input}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%" class="row-p"><label>No Of Trailer</label></td>
+                                            <td width="22%" class="row-p">: NA</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3">
+                                <div>
+                                    <div class="ui-grid-responsive">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-weight:bold;">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><br>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                    style="padding-top:10px;">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" width="50%">
+                                                <table width="95%" border="1" class="border-ls-m" cellspacing="0" cellpadding="0"
+                                                    style="padding-top:10px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Permissible
+                                                                    Dimension</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Height</label>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><span
+                                                                    style="font-weight: bold!important;">Width</span>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Length</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>4.0</label></td>
+                                                            <td width="33%" align="center" class="row-p">2.6 </td>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>12.0</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td align="center" width="50%">
+                                                <table width="95%" border="1" cellspacing="0" cellpadding="0"
+                                                    style="padding-top:10px;" class="border-ls-m">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Actual
+                                                                    Dimension of consignment(In Meter)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Height</label>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><span
+                                                                    style="font-weight: bold!important;">Width</span>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Length</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p"><label>
+                                                                {{data.conHeight_input}}</label></td>
+                                                            <td width="33%" align="center" class="row-p">{{data.conWidth_input}}
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><label>
+                                                                {{data.conLength_input}}</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table><br>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                    style="padding-top:10px;" class="border-ls-m">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" width="50%">
+                                                <table width="95%" border="1" cellspacing="0" cellpadding="0"
+                                                    style="padding-top:10px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Actual
+                                                                    Dimension of vehicle(In Meter)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Height</label>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><span
+                                                                    style="font-weight: bold!important;">Width</span>
+                                                            </td>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Length</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>0</label></td>
+                                                            <td width="33%" align="center" class="row-p">0 </td>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>0</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td align="center" width="50%">
+                                                <table width="95%" border="1" cellspacing="0" cellpadding="0"
+                                                    style="padding-top:10px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Overall
+                                                                    projection of consignment(In Meter)</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Left
+                                                                    side</label></td>
+                                                            <td width="33%" align="center" class="row-p"><span
+                                                                    style="font-weight: bold!important;">Right
+                                                                    side</span> </td>
+                                                            <td width="33%" align="center" class="row-p"><label
+                                                                    style="font-weight: bold!important;">Rear
+                                                                    side</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>0.00</label></td>
+                                                            <td width="33%" align="center" class="row-p">0.00 </td>
+                                                            <td width="33%" align="center" class="row-p">
+                                                                <label>0.00</label></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="row-p">
+                                <div>
+                                    <div class="ui-grid-responsive">
+                                        <table width="100%" border="0" cellspacing="0"
+                                            style="border-top: 1px #000 solid;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                            cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="64%" style="font-weight:bold;">Particular</td>
+                                                    <td width="12%" style="font-weight:bold;">Fees/Tax</td>
+                                                    <td width="12%" style="font-weight:bold;">Fine</td>
+                                                    <td width="12%" style="font-weight:bold;">Total</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div id="j_idt215" class="ui-datalist ui-widget">
+                                            <div id="j_idt215_content" class="ui-datalist-content ui-widget-content">
+                                                <ul id="j_idt215_list" class="ui-datalist-data">
+                                                    <li class="ui-datalist-item">
+                                                        <table width="100%" border="0" cellspacing="0"
+                                                            style="border-top: none;border-bottom: 1px #000 solid;border-left: none; border-right: none;"
+                                                            cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="64%">Overdimension Consignment Exemption
+                                                                        Fee</td>
+                                                                    <td width="12%" style="text-align: center;">0</td>
+                                                                    <td width="12%" style="text-align: center;">{{data.total_tax_amount}}</td>
+                                                                    <td width="12%" style="text-align: center;">{{data.total_tax_amount}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-weight: bold;">Grand Total : </span><img id="j_idt219"
+                                    src="/static/gujrat_odc_recipt_css/rupees_sign.png" alt="" width="10px"
+                                    height="10px"> {{data.total_tax_amount}}/- (<span>{{data.amount_text}} ONLY</span>)
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;">Note : 1) This is a computer generated
+                                    printout and no signature is required.</span> <br>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-weight: bold;font-size: 12pt; display:flex;margin-top:35.1px;">Term and Conditins:</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(1) In order to ensure
+                                    public safety, there should be flags/lights affixed at front and rear of the vehicle
+                                    and there should be displayed a written instruction indicating “Heavy vehicle is
+                                    passing” at front and rear of the vehicle.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(2) Vehicle should be
+                                    driven in a manner that it does not endanger public interest and public
+                                    safety.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(3) Vehicle should be
+                                    transported in such a way that it does not cause inconvenience to other
+                                    vehicle.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(4) Vehicle should only be
+                                    driven on public place after half an hour after sunrise and half an hour before
+                                    sunset.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(5) Regarding the passing
+                                    of loaded vehicles on bridges constructed on the road, the transporter/owner should
+                                    take prior approval of the Executive Engineer, State R&amp;B dept, NHAI, Local
+                                    authority, as the case may be.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(6) If the road or bridges
+                                    are damaged due to the operation of the vehicle, the amount of such loss should be
+                                    paid by the vehicle owner to the State Government.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(7) Vehicle should be
+                                    operated only on state and national highways and can’t be operated on minor
+                                    highways.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(8) In case breach of any
+                                    condition of this exemption, this exemption will automatically deemed to be
+                                    cancelled.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(9) Exemption obtained on
+                                    the basis of false declaration or misrepresentation of facts shall be invalid and in
+                                    such case the penal provision provided under sections 190(2) or 194(1A) or both
+                                    depending upon nature of the offence, read with section 210A shall be
+                                    imposed.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(10) Vehicle should be
+                                    comply with all road safety provisions. Safety devices such as radium, reflector etc
+                                    should be affixed in accordance with rule.</span>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3"><span style="font-style: italic;font-size: 11pt;">(11) In case this
+                                    transportation found dangerous to public property, the State government has right to
+                                    stop or regulate such kind of transportation.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+            value="3731666850967983151:-2267737373894659339" autocomplete="off">
+    </form>
+    <div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div>
+</body>
+
+</html>
