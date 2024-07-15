@@ -2,6 +2,7 @@ from django.urls import path
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import HttpResponse
 
 urlpatterns = [
     path('',home),
@@ -31,6 +32,7 @@ urlpatterns = [
     path('maharashtra_form',maharashtra_data),
     path('maharashtra_recipt/<str:id>',maharashtra_recipt),
     path('tamilnadu_form',tamilnadu_data),
+    path('tamilnadu_recipt/<str:id>',tamilnadiu_recipt),
     path('tamilnadiu_recipt/<str:id>',tamilnadiu_recipt),
     path('uttarpradesh_form',uttarpradesh_data),
     path('uttarpradesh_recipt/<str:id>',uttarpradesh_recipt),

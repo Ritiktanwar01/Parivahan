@@ -44,7 +44,6 @@ class add_rajasthan(models.Model):
         total_tax_amount =models.CharField(max_length = 120)
         civik_amount =models.CharField(max_length = 120)
         service_amount =models.CharField(max_length = 120)
-        Weight =models.CharField(max_length = 120)
         sleeper_Cap_Weight =models.CharField(max_length = 120)
         counter_fee = models.CharField(max_length = 120)
         create_date =models.CharField(max_length = 120)
@@ -136,7 +135,6 @@ class add_bihar(models.Model):
     tax_total=models.CharField(max_length = 80,default="default")
     payment_mode=models.CharField(max_length = 80,default="default")
     client_name=models.CharField(max_length = 80,default="default")
-    Weight=models.CharField(max_length = 80,default="default")
     total_amt_text = models.CharField(max_length = 180,default = "nothing")
     recipt_no = models.CharField(max_length=80,default="none")
     
@@ -298,7 +296,6 @@ class add_karnataka(models.Model):
     infra_cess  = models.CharField(max_length = 80,default="default")
     permit_fee  = models.CharField(max_length = 80,default="default")
     permit_endoresment_variation  = models.CharField(max_length = 80,default="default")
-    Weight  = models.CharField(max_length = 80,default="default")
     payment_date = models.CharField(max_length = 80,default="default")
     total_amt_text = models.CharField(max_length = 180,default = "nothing")
     
@@ -421,7 +418,6 @@ class add_uttarpradesh(models.Model):
     permit_upto = models.CharField(max_length = 80,default="default")
     permit_no = models.CharField(max_length = 80,default="default")
     total_tax_amount = models.CharField(max_length = 80,default="default")
-    Weight = models.CharField(max_length = 80,default="default")
     payment_date = models.CharField(max_length = 80,default="default")
     total_amt_text = models.CharField(max_length = 180,default = "nothing")
     recipt_no = models.CharField(max_length=70,default="default")

@@ -167,7 +167,7 @@
 									<button type="submit" class="button button--general button--inline button--blue-bg ">View</button>
 								</form>
 								<div class="table__cell">
-									<form action="/delete_user" method="post">
+									<form action="/admin/delete_user" method="post">
 										{% csrf_token %}
 									<input type="hidden" name="user_id" value="{{data.user_uuid}}">
 									<button type="submit" class="button button--general button--inline button--red-bg ">Delete</button>

@@ -91,7 +91,7 @@ def add_user_temp(request):
             state_list.append(statelists.objects.filter(id = states[i].get('state_name')).values("id","state")[0])
         return render(request,'CustomAdmin/add_users.html',{"states":state_list})
     else:
-        return redirect('/admin')
+        return redirect('admin')
     
 def add_users(request):
     auth_token = request.session.get('useruuid')
@@ -114,7 +114,7 @@ def add_users(request):
                 except:
                     print("somthing went wroong")
                     
-                return redirect('/admin/user_list')
+                return redirect('/user_list')
     else:
         return redirect('/admin')
 def logout(request):
@@ -139,6 +139,6 @@ def delete_user(request):
             check_exist = user_custom.objects.filter(user_uuid = user).exists()
             if (check_exist):
                 user_custom.objects.filter(user_uuid = user).update(show=False)
-                return redirect('/admin/user_list')
+                return redirect('/user_list')
         else:
             print("not exist")

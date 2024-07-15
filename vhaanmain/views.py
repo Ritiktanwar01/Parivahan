@@ -190,7 +190,8 @@ def stateform(request):
         elif (state_name == "Himachal Pradesh"):
             return render(request, 'Himachal/himachalpradesh.html')
         elif (state_name == "Bihar"):
-            return render(request, 'Bihar/bihar.html')
+            # return render(request, 'Bihar/bihar.html')
+            return HttpResponse("this site is under devlopment")
         elif (state_name == "Gujrat"):
             return render(request, 'Gujrat/gujarat.html')
         elif (state_name == "Uttarpradesh"):
@@ -206,13 +207,14 @@ def stateform(request):
         elif (state_name == "Madhya Pradesh"):
             return HttpResponse("<h1>Sorry This Site Is Under Maintinence Press Back Button To Exit This Page</h1>")
         elif (state_name == "Karnataka"):
-            return render(request,'Karnatka/karnataka.html')
+            # return render(request,'Karnatka/karnataka.html')
+            return HttpResponse("this site is under devlopment")
         else:
             return HttpResponse("invalid state")
     else:
         return HttpResponse("Wrong method")    
 def rajasthan_data(request):
-        user_name = request.session.get('user_name')
+        token = request.COOKIES.get('token')
         vehicleno  = request.POST.get('vehicleno').upper()
         chassisno  = request.POST.get('chassisno').upper()
         ownername  = request.POST.get('ownername').upper()
@@ -231,33 +233,36 @@ def rajasthan_data(request):
         tax_upto =request.POST.get('tax_upto').upper()
         civik_amount =request.POST.get('civik_amount')
         service_amount =request.POST.get('service_amount')
-        Weight =request.POST.get('Weight')
         sleeper_Cap_Weight =request.POST.get('sleeper_Cap_Weight')
         counter_fee = request.POST.get('counterfee')
         create_date = getdatetime()
+        decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+        username = decoded_payload.get("username")
+        password = decoded_payload.get("password")
+        user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
         recipt_no = getrecipt().upper()
         total_tax_amount = int(civik_amount) + int(service_amount) + int(counter_fee)
         total_amt_text = number_to_text(total_tax_amount).upper()
-        data = add_rajasthan(user_name = user_name,vehicleno = vehicleno,chassisno=chassisno,ownername=ownername,mobile=mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,PermitType=PermitType,border_entry=border_entry,checkpost_name=checkpost_name,TaxMode = TaxMode, txt_no_of_weeks = txt_no_of_weeks,tax_from = tax_from,tax_upto = tax_upto,total_tax_amount =total_tax_amount,civik_amount = civik_amount,service_amount = service_amount,Weight = Weight, sleeper_Cap_Weight= sleeper_Cap_Weight,counter_fee =counter_fee,create_date = create_date, recipt_no = recipt_no,total_amt_text=total_amt_text)
+        data = add_rajasthan(user_name = user_uuid,vehicleno = vehicleno,chassisno=chassisno,ownername=ownername,mobile=mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,PermitType=PermitType,border_entry=border_entry,checkpost_name=checkpost_name,TaxMode = TaxMode, txt_no_of_weeks = txt_no_of_weeks,tax_from = tax_from,tax_upto = tax_upto,total_tax_amount =total_tax_amount,civik_amount = civik_amount,service_amount = service_amount,sleeper_Cap_Weight= sleeper_Cap_Weight,counter_fee =counter_fee,create_date = create_date, recipt_no = recipt_no,total_amt_text=total_amt_text)
         data.save()
         send_sms(mobile,tax_from,tax_upto,create_date,total_tax_amount,vehicleno)
         id = str(data.id)
         return redirect('rajasthan_recipt'+'/'+id)
     
 def rajasthan_pdf(request,id):
-    get_data = add_rajasthan.objects.filter(id = id).values('vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','PermitType','border_entry','checkpost_name','TaxMode','txt_no_of_weeks','tax_from','tax_upto','total_tax_amount','civik_amount','service_amount','Weight','sleeper_Cap_Weight','create_date','recipt_no','counter_fee','total_amt_text')
+    get_data = add_rajasthan.objects.filter(id = id).values('vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','PermitType','border_entry','checkpost_name','TaxMode','txt_no_of_weeks','tax_from','tax_upto','total_tax_amount','civik_amount','service_amount','sleeper_Cap_Weight','create_date','recipt_no','counter_fee','total_amt_text')
     qr_code = qrcode.make(mysite+"rajasthan_scan/"+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/rajasthan/'+id_str+'.png')
     return render(request,'rajasthan/rajastha-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def rajasthan_scan(request,id):
-    get_data = add_rajasthan.objects.filter(id = id).values('vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','PermitType','border_entry','checkpost_name','TaxMode','txt_no_of_weeks','tax_from','tax_upto','total_tax_amount','civik_amount','service_amount','Weight','sleeper_Cap_Weight','create_date','recipt_no','counter_fee','total_amt_text')
+    get_data = add_rajasthan.objects.filter(id = id).values('vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','PermitType','border_entry','checkpost_name','TaxMode','txt_no_of_weeks','tax_from','tax_upto','total_tax_amount','civik_amount','service_amount','sleeper_Cap_Weight','create_date','recipt_no','counter_fee','total_amt_text')
     return render(request,'rajasthan/rajastha-pdf-scan..html',{'data':get_data[0]})
 
 
 def punjab_data(request):
-        user_name = request.session.get('user_name')
+        token = request.COOKIES.get('token')
         vehicleno = request.POST.get('vehicleno').upper()
         chassisno = request.POST.get('chassisno').upper()
         ownername = request.POST.get('ownername').upper()
@@ -265,7 +270,6 @@ def punjab_data(request):
         from_state=request.POST.get('from_state').upper()
         VehicleType=request.POST.get('VehicleType').upper()
         VehicleClass=request.POST.get('VehicleClass').upper()
-        SeatingOrWeight=request.POST.get('SeatingOrWeight')
         seatingOrLaden=request.POST.get('seatingOrLaden')
         unldweightOrSleeper=request.POST.get('unldweightOrSleeper')
         ServiceType=request.POST.get('ServiceType').upper()
@@ -279,9 +283,13 @@ def punjab_data(request):
         create_date=request.POST.get('create_date')
         recipt_no=getrecipt()
         mv_tax = request.POST.get('mv_tax')
+        decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+        username = decoded_payload.get("username")
+        password = decoded_payload.get("password")
+        user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
         total_amount = int(usercharge) + int(infracess) +int(mv_tax)
         total_amt_text = number_to_text(total_amount).upper()
-        data = add_punjab(user_name = user_name,vehicleno = vehicleno,chassisno=chassisno,ownername=ownername,mobile=mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,border_entry=border_entry,SeatingOrWeight=SeatingOrWeight,seatingOrLaden=seatingOrLaden,unldweightOrSleeper=unldweightOrSleeper,ServiceType=ServiceType,TaxMode=TaxMode,districtname=districtname,entrydate=entrydate,outdate=outdate,total_amount=total_amount,usercharge=usercharge,create_date=create_date,infracess=infracess,recipt_no=recipt_no,mv_tax = mv_tax,total_amt_text=total_amt_text)
+        data = add_punjab(user_name = user_uuid,vehicleno = vehicleno,chassisno=chassisno,ownername=ownername,mobile=mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,border_entry=border_entry,seatingOrLaden=seatingOrLaden,unldweightOrSleeper=unldweightOrSleeper,ServiceType=ServiceType,TaxMode=TaxMode,districtname=districtname,entrydate=entrydate,outdate=outdate,total_amount=total_amount,usercharge=usercharge,create_date=create_date,infracess=infracess,recipt_no=recipt_no,mv_tax = mv_tax,total_amt_text=total_amt_text)
         data.save()
         send_sms(mobile,entrydate,outdate,create_date,total_amount,vehicleno)
         id = str(data.id)
@@ -292,7 +300,7 @@ def punjab_pdf(request,id):
     qr_code = qrcode.make(mysite+'/punjab_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/punjab/'+id_str+'.png')
-    return render(request,'Punjab/punjab-pdf-scan.html',{'data':get_data[0],'qr_code':id})
+    return render(request,'Punjab/punjab-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def punjab_scan(request,id):
     get_data = add_punjab.objects.filter(id = id).values('vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','SeatingOrWeight','seatingOrLaden','unldweightOrSleeper','ServiceType','TaxMode','border_entry','districtname','entrydate','outdate','total_amount','usercharge','infracess','create_date','recipt_no','mv_tax','total_amt_text')
@@ -301,7 +309,7 @@ def punjab_scan(request,id):
 
 
 def haryana_data(request):
-        created_username = request.session.get('user_name').upper()
+        created_username = request.COOKIES.get('token')
         vehicleno = request.POST.get('vehicleno').upper()
         chassisno = request.POST.get('chassisno').upper()
         ownername = request.POST.get('ownername').upper()
@@ -344,7 +352,7 @@ def haryana_pdf_scan(request,id):
 
 
 def bihar_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicle = request.POST.get('vehicle').upper()
     chassis_no = request.POST.get('chassis_no').upper()
     owner_name = request.POST.get('owner_name').upper()
@@ -364,29 +372,32 @@ def bihar_data(request):
     tax_total=request.POST.get('tax_total')
     payment_mode=request.POST.get('payment_mode').upper()
     client_name=request.POST.get('client_name').upper()
-    Weight=request.POST.get('Weight').upper()
     payment_date = getdatetime()
     total_amt_text = number_to_text(int(tax_total)).upper()
     recipt_no = getrecipt()
-    data = add_bihar(recipt_no=recipt_no,created_username = created_username,vehicle = vehicle,chassis_no = chassis_no,owner_name = owner_name,owner_mobile = owner_mobile ,from_state=from_state,vehicle_type=vehicle_type,vehicle_class=vehicle_class,permit_type=permit_type,sitting_capacity=sitting_capacity,sleeper_capacity=sleeper_capacity,loading_capacity=loading_capacity,from_district=from_district,barrier=barrier,tax_mode=tax_mode,tax_from=tax_from,tax_upto=tax_upto,tax_total=tax_total,payment_mode=payment_mode,client_name=client_name,Weight=Weight,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_bihar(recipt_no=recipt_no,created_username = user_uuid,vehicle = vehicle,chassis_no = chassis_no,owner_name = owner_name,owner_mobile = owner_mobile ,from_state=from_state,vehicle_type=vehicle_type,vehicle_class=vehicle_class,permit_type=permit_type,sitting_capacity=sitting_capacity,sleeper_capacity=sleeper_capacity,loading_capacity=loading_capacity,from_district=from_district,barrier=barrier,tax_mode=tax_mode,tax_from=tax_from,tax_upto=tax_upto,tax_total=tax_total,payment_mode=payment_mode,client_name=client_name,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(owner_mobile,tax_from,tax_upto,payment_date,tax_total,vehicle)
     id = data.id
     return redirect('bihar_recipt'+'/'+str(id))
 
 def bihar_recipt(request,id):
-    get_data = add_bihar.objects.filter(id = id).values('recipt_no','vehicle','chassis_no','owner_name','owner_mobile','from_state','vehicle_type','vehicle_class','sitting_capacity','sleeper_capacity','loading_capacity','from_district','tax_from','barrier','tax_mode','tax_from','tax_upto','tax_total','payment_mode','client_name','Weight','payment_date','total_amt_text')
+    get_data = add_bihar.objects.filter(id = id).values('recipt_no','vehicle','chassis_no','owner_name','owner_mobile','from_state','vehicle_type','vehicle_class','sitting_capacity','sleeper_capacity','loading_capacity','from_district','tax_from','barrier','tax_mode','tax_from','tax_upto','tax_total','payment_mode','client_name','payment_date','total_amt_text')
     qr_code = qrcode.make(mysite+'/bihar_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/bihar/'+id_str+'.png')
     return render(request,'Bihar/bihar-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def bihar_scan(request,id):
-    get_data = add_bihar.objects.filter(id = id).values('recipt_no','UsersId','vehicle','chassis_no','owner_name','owner_mobile','from_state','vehicle_type''vehicle_class','sitting_capacity','sleeper_capacity','loading_capacity','from_district','tax_from','barrier','tax_mode','tax_from','tax_upto','tax_total','payment_mode','client_name','Weight','payment_date','total_amt_text')
+    get_data = add_bihar.objects.filter(id = id).values('recipt_no','UsersId','vehicle','chassis_no','owner_name','owner_mobile','from_state','vehicle_type''vehicle_class','sitting_capacity','sleeper_capacity','loading_capacity','from_district','tax_from','barrier','tax_mode','tax_from','tax_upto','tax_total','payment_mode','client_name','payment_date','total_amt_text')
     return render(request,'Bihar/bihar-pdf.html',{'data':get_data[0]})
 
 def gujrat_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicleno = request.POST.get('vehicleno').upper()
     chassisno = request.POST.get('chassisno').upper()
     ownername = request.POST.get('ownername').upper()
@@ -411,7 +422,11 @@ def gujrat_data(request):
     payment_date = getdatetime()
     total_amt_text = number_to_text(total_tax_amount).upper()
     recipt_no = getrecipt()
-    data = add_gujrat(recipt_no = recipt_no,created_username = created_username,vehicleno = vehicleno,chassisno = chassisno,ownername = ownername,mobile = mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,ownertype=ownertype,makerstatus=makerstatus,ptype=ptype,permit_upto=permit_upto,TaxMode=TaxMode,border_entry=border_entry,permit_no=permit_no,permit_ia=permit_ia,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_gujrat(recipt_no = recipt_no,created_username = user_uuid,vehicleno = vehicleno,chassisno = chassisno,ownername = ownername,mobile = mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,ownertype=ownertype,makerstatus=makerstatus,ptype=ptype,permit_upto=permit_upto,TaxMode=TaxMode,border_entry=border_entry,permit_no=permit_no,permit_ia=permit_ia,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = str(data.id)
@@ -432,7 +447,7 @@ def gujrat_scan(request,id):
 
 
 def gujrat_odc_data(request):
-    created_user = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicle = request.POST.get('vehicle').upper()
     chassis = request.POST.get('chassis').upper()
     owner_type = request.POST.get('owner_type').upper()
@@ -466,7 +481,11 @@ def gujrat_odc_data(request):
     total_tax_amount = int(request.POST.get('total_tax_amount'))
     amount_text = number_to_text(total_tax_amount).upper()
     payment_date = getdatetime().upper()
-    data = add_gujrat_odc(created_user = created_user ,vehicle = vehicle,chassis = chassis,owner_type = owner_type,owner_name = owner_name,mobileno = mobileno,vehicle_type = vehicle_type,vehicle_class = vehicle_class,gross_wt = gross_wt,unladen_wt = unladen_wt,body_type = body_type,goods_nature_input = goods_nature_input,over_dimension_input = over_dimension_input,conHeight_input = conHeight_input,conWidth_input = conWidth_input,conLength_input = conLength_input,permit_type_input = permit_type_input,txt_permit_no = txt_permit_no,road_tax_val = road_tax_val,state_from = state_from,district_input = district_input,state_to = state_to,to_district_input = to_district_input,insurance_val = insurance_val,fitness_val = fitness_val,pucc_val = pucc_val,permit_val = permit_val,lr_no = lr_no,goodd_description_input = goodd_description_input,remarks = remarks,total_tax_amount = total_tax_amount,payment_date = payment_date,lr_date = lr_date,amount_text = amount_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_gujrat_odc(created_user = user_uuid ,vehicle = vehicle,chassis = chassis,owner_type = owner_type,owner_name = owner_name,mobileno = mobileno,vehicle_type = vehicle_type,vehicle_class = vehicle_class,gross_wt = gross_wt,unladen_wt = unladen_wt,body_type = body_type,goods_nature_input = goods_nature_input,over_dimension_input = over_dimension_input,conHeight_input = conHeight_input,conWidth_input = conWidth_input,conLength_input = conLength_input,permit_type_input = permit_type_input,txt_permit_no = txt_permit_no,road_tax_val = road_tax_val,state_from = state_from,district_input = district_input,state_to = state_to,to_district_input = to_district_input,insurance_val = insurance_val,fitness_val = fitness_val,pucc_val = pucc_val,permit_val = permit_val,lr_no = lr_no,goodd_description_input = goodd_description_input,remarks = remarks,total_tax_amount = total_tax_amount,payment_date = payment_date,lr_date = lr_date,amount_text = amount_text)
     Id = data.save()
     Id = data.id
     return redirect('gujrat_odc_recipt'+'/'+str(Id))
@@ -482,7 +501,7 @@ def gujrat_odc_scan(request,id):
     return render(request,'Gujrat_ODC/err_scan.html')
 
 def himachal_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicleno = request.POST.get('vehicleno').upper()
     chassisno = request.POST.get('chassisno').upper()
     ownername = request.POST.get('ownername').upper()
@@ -501,7 +520,11 @@ def himachal_data(request):
     payment_date = getdatetime()
     recipt_no = getrecipt()
     total_amt_text = number_to_text(total_tax_amount)
-    data = add_himachal(recipt_no=recipt_no,created_username =created_username,vehicleno =vehicleno,chassisno =chassisno,ownername =ownername,mobile =mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,border_entry=border_entry,TaxMode=TaxMode,service_amount=service_amount,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_himachal(recipt_no=recipt_no,created_username = user_uuid,vehicleno =vehicleno,chassisno =chassisno,ownername =ownername,mobile =mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,border_entry=border_entry,TaxMode=TaxMode,service_amount=service_amount,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -520,7 +543,7 @@ def himachal_scan(request,id):
 
 
 def jharkhand_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicleno = request.POST.get('vehicleno').upper()
     chassisno = request.POST.get('chassisno').upper()
     ownername = request.POST.get('ownername').upper()
@@ -539,7 +562,11 @@ def jharkhand_data(request):
     payment_date = getdatetime()
     total_amt_text = number_to_text(total_tax_amount).upper()
     recipt_no = getrecipt()
-    data = add_jharkhand(recipt_no=recipt_no,created_username=created_username,vehicleno =vehicleno,chassisno =chassisno,ownername =ownername,mobile =mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,PermitType=PermitType,seating_c=seating_c,border_entry=border_entry,TaxMode=TaxMode,txt_no_of_weeks=txt_no_of_weeks,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date=payment_date,total_amt_text = total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_jharkhand(recipt_no=recipt_no,created_username=user_uuid,vehicleno =vehicleno,chassisno =chassisno,ownername =ownername,mobile =mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,PermitType=PermitType,seating_c=seating_c,border_entry=border_entry,TaxMode=TaxMode,txt_no_of_weeks=txt_no_of_weeks,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,payment_date=payment_date,total_amt_text = total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -557,7 +584,7 @@ def jharkhand_scan(request,id):
     return render(request,'Jharkhand/jharkhand-pdf.html',{'data':get_data[0]})
 
 def karnatka_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicleno = request.POST.get('vehicleno')
     chassisno = request.POST.get('chassisno')
     ownername = request.POST.get('ownername')
@@ -584,28 +611,31 @@ def karnatka_data(request):
     infra_cess = request.POST.get('infra_cess')
     permit_fee = request.POST.get('permit_fee')
     permit_endoresment_variation = request.POST.get('permit_endoresment_variation')
-    Weight = request.POST.get('Weight')
     payment_date = getdatetime()
     total_amt_text = number_to_text(total_tax_amount)
-    data = add_karnataka(created_username =  created_username,vehicleno =  vehicleno,chassisno =  chassisno,ownername =  ownername,mobile =  mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,ServiceType =  ServiceType,PermitType =  PermitType,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,txt_floor_area =  txt_floor_area,TaxMode =  TaxMode,permit_upto =  permit_upto,fitdate =  fitdate,ins_upto =  ins_upto,tax_validity =  tax_validity,border_entry =  border_entry,txt_no_of_weeks =  txt_no_of_weeks,service_amount =  service_amount,tax_from =  tax_from,tax_upto =  tax_upto,total_tax_amount =  total_tax_amount,infra_cess =  infra_cess,permit_fee =  permit_fee,permit_endoresment_variation =  permit_endoresment_variation,Weight =  Weight,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_karnataka(created_username =  user_uuid,vehicleno =  vehicleno,chassisno =  chassisno,ownername =  ownername,mobile =  mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,ServiceType =  ServiceType,PermitType =  PermitType,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,txt_floor_area =  txt_floor_area,TaxMode =  TaxMode,permit_upto =  permit_upto,fitdate =  fitdate,ins_upto =  ins_upto,tax_validity =  tax_validity,border_entry =  border_entry,txt_no_of_weeks =  txt_no_of_weeks,service_amount =  service_amount,tax_from =  tax_from,tax_upto =  tax_upto,total_tax_amount =  total_tax_amount,infra_cess =  infra_cess,permit_fee =  permit_fee,permit_endoresment_variation =  permit_endoresment_variation,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
     return redirect('karnataka_recipt'+'/'+id)
     
 def karnataka_recipt(request,id):
-    get_data = add_karnataka.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','Weight','total_amt_text')
+    get_data = add_karnataka.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','total_amt_text')
     qr_code = qrcode.make(mysite+'/karnataka_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/karnatka/'+id_str+'.png')
     return render(request,'Karnatka/karnataka-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def karnataka_scan(request,id):
-    get_data = add_karnataka.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','Weight','total_amt_text')
+    get_data = add_karnataka.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','total_amt_text')
     return render(request,'Karnatka/karnataka-pdf.html',{'data':get_data[0]})
 
 def madhyapradesh_data(request):
-    created_username = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     VehicleType = request.POST.get('VehicleType')
     from_state = request.POST.get('from_state')
     ownername = request.POST.get('ownername')
@@ -621,7 +651,11 @@ def madhyapradesh_data(request):
     genby = request.POST.get('genby')
     payment_date = getdatetime()
     total_amt_text = number_to_text(total_tax_amount)
-    data = add_madhyapradesh(created_username = created_username,VehicleType = VehicleType,from_state = from_state,ownername = ownername,vehicleno = vehicleno,gramin = gramin,tax_mode = tax_mode,tax_from = tax_from,tax_upto = tax_upto,total_tax_amount = total_tax_amount,tax_consessioner = tax_consessioner,tax_ips = tax_ips,mobile = mobile,genby = genby,payment_date = payment_date,total_amt_text = total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_madhyapradesh(created_username = user_uuid,VehicleType = VehicleType,from_state = from_state,ownername = ownername,vehicleno = vehicleno,gramin = gramin,tax_mode = tax_mode,tax_from = tax_from,tax_upto = tax_upto,total_tax_amount = total_tax_amount,tax_consessioner = tax_consessioner,tax_ips = tax_ips,mobile = mobile,genby = genby,payment_date = payment_date,total_amt_text = total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -629,18 +663,18 @@ def madhyapradesh_data(request):
 
 
 def madhyapradesh_recipt(request,id):
-    get_data = add_madhyapradesh.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','Weight','total_amt_text')
+    get_data = add_madhyapradesh.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','total_amt_text')
     qr_code = qrcode.make(mysite+'/madhyapradesh_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/MP/'+id_str+'.png')
     return render(request,'Madhyapradesh/madhyapradesh-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def madhyapradesh_scan(request,id):
-    get_data = add_madhyapradesh.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','Weight','total_amt_text')
+    get_data = add_madhyapradesh.objects.filter(id=id).values('created_username' ,'vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','ServiceType','PermitType','seating_c','txt_sleeper_cap','txt_floor_area','TaxMode','permit_upto','fitdate','ins_upto','tax_validity','border_entry','txt_no_of_weeks','service_amount','tax_from','tax_upto','total_tax_amount','infra_cess','permit_fee','permit_endoresment_variation','total_amt_text')
     return render(request,'Madhyapradesh/madhyapradesh-pdf.html',{'data':get_data[0]})
 
 def maharashtra_data(request):
-    created_username =  request.session.get('user_name')
+    token =  request.COOKIES.get('token')
     vehicleno =  request.POST.get('vehicleno').upper()
     chassisno =  request.POST.get('chassisno').upper()
     ownername =  request.POST.get('ownername').upper()
@@ -662,7 +696,11 @@ def maharashtra_data(request):
     total_amt_text = number_to_text(int(grand_tottal)).upper()
     payment_date = getdatetime()
     recipt_no = getrecipt()
-    data = add_maharashtra(recipt_no=recipt_no,grand_tottal=grand_tottal,created_username = created_username,vehicleno = vehicleno,chassisno = chassisno,ownername = ownername,mobile = mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,TaxMode=TaxMode,districtname=districtname,checkpost=checkpost,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,service_amount=service_amount,create_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_maharashtra(recipt_no=recipt_no,grand_tottal=grand_tottal,created_username = user_uuid,vehicleno = vehicleno,chassisno = chassisno,ownername = ownername,mobile = mobile,from_state=from_state,VehicleType=VehicleType,VehicleClass=VehicleClass,ServiceType=ServiceType,seating_c=seating_c,txt_sleeper_cap=txt_sleeper_cap,TaxMode=TaxMode,districtname=districtname,checkpost=checkpost,tax_from=tax_from,tax_upto=tax_upto,total_tax_amount=total_tax_amount,service_amount=service_amount,create_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -681,7 +719,7 @@ def maharashtra_scan(request,id):
 
 
 def tamilnadu_data(request):
-     created_username = request.session.get('user_name')
+     token = request.COOKIES.get('token')
      vehicleno =  request.POST.get('vehicleno')
      chassisno =  request.POST.get('chassisno')
      ownername =  request.POST.get('ownername')
@@ -716,27 +754,31 @@ def tamilnadu_data(request):
      permitfree = request.POST.get('permitfree')
      payment_date = getdatetime()
      total_amt_text = number_to_text(total_tax_amount)
-     data = add_tamilnadu(created_username = created_username,vehicleno =  vehicleno,chassisno =  chassisno,ownername =  ownername,mobile =  mobile,from_state = from_state,VehicleType = VehicleType,VehicleClass = VehicleClass,recipt_no = recipt_no,PermitType = PermitType,issuing_authority = issuing_authority,txt_seat_cap = txt_seat_cap,txt_sleeper_cap = txt_sleeper_cap,Extra_seat_cap = Extra_seat_cap,ins_validity_input = ins_validity_input,fitness_valid_input = fitness_valid_input,pucc_validity_input = pucc_validity_input,TaxMode = TaxMode,txt_permit_auth_no = txt_permit_auth_no,permit_authorization_vali = permit_authorization_vali,Greentax = Greentax,regn_date = regn_date,districtname = districtname,permit_upto_input = permit_upto_input,cal_tax_from_input = cal_tax_from_input,cal_tax_to_input = cal_tax_to_input,checkpost_name = checkpost_name,txt_permit_no = txt_permit_no,total_tax_amount = total_tax_amount,mv_tax = mv_tax,serviceusercharge = serviceusercharge,welfaretax = welfaretax,permitfree = permitfree,payment_date = payment_date,total_amt_text=total_amt_text)
+     decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+     username = decoded_payload.get("username")
+     password = decoded_payload.get("password")
+     user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+     data = add_tamilnadu(created_username = user_uuid,vehicleno =  vehicleno,chassisno =  chassisno,ownername =  ownername,mobile =  mobile,from_state = from_state,VehicleType = VehicleType,VehicleClass = VehicleClass,recipt_no = recipt_no,PermitType = PermitType,issuing_authority = issuing_authority,txt_seat_cap = txt_seat_cap,txt_sleeper_cap = txt_sleeper_cap,Extra_seat_cap = Extra_seat_cap,ins_validity_input = ins_validity_input,fitness_valid_input = fitness_valid_input,pucc_validity_input = pucc_validity_input,TaxMode = TaxMode,txt_permit_auth_no = txt_permit_auth_no,permit_authorization_vali = permit_authorization_vali,Greentax = Greentax,regn_date = regn_date,districtname = districtname,permit_upto_input = permit_upto_input,cal_tax_from_input = cal_tax_from_input,cal_tax_to_input = cal_tax_to_input,checkpost_name = checkpost_name,txt_permit_no = txt_permit_no,total_tax_amount = total_tax_amount,mv_tax = mv_tax,serviceusercharge = serviceusercharge,welfaretax = welfaretax,permitfree = permitfree,create_date = payment_date,total_amt_text=total_amt_text)
      send_sms(mobile,cal_tax_from_input,cal_tax_to_input,payment_date,total_tax_amount,vehicleno)
      data.save()
      id = data.id
-     return redirect('tamilnadu_recipt'+'/'+id)
+     return redirect('tamilnadu_recipt'+'/'+str(id))
 
      
 def tamilnadiu_recipt(request,id):
-    get_data = add_tamilnadu.objects.filter(id=id).values('created_username' ,'vehicleno' ,'chassisno','ownername','mobile' ,'from_state','VehicleType','VehicleClass','recipt_no','PermitType','issuing_authority','txt_seat_cap','txt_sleeper_cap','Extra_seat_cap','ins_validity_input','fitness_valid_input','pucc_validity_input','TaxMode','txt_permit_auth_no','permit_authorization_vali','Greentax','regn_date','districtname','permit_upto_input','cal_tax_from_input','cal_tax_to_input','checkpost_name','txt_permit_no','total_tax_amount','mv_tax','serviceusercharge','welfaretax','permitfree','payment_date','total_amt_text')
+    get_data = add_tamilnadu.objects.filter(id=id).values('created_username' ,'vehicleno' ,'chassisno','ownername','mobile' ,'from_state','VehicleType','VehicleClass','recipt_no','PermitType','issuing_authority','txt_seat_cap','txt_sleeper_cap','Extra_seat_cap','ins_validity_input','fitness_valid_input','pucc_validity_input','TaxMode','txt_permit_auth_no','permit_authorization_vali','Greentax','regn_date','districtname','permit_upto_input','cal_tax_from_input','cal_tax_to_input','checkpost_name','txt_permit_no','total_tax_amount','mv_tax','serviceusercharge','welfaretax','permitfree','create_date','total_amt_text')
     qr_code = qrcode.make(mysite+'/tamilnadu_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/tamilnadu/'+id_str+'.png')
     return render(request,'Tamilnadu/TamilNAduRecipt.html',{'data':get_data[0],'qr_code':id})
 
 def tamilnadiu_scan(request,id):
-    get_data = add_tamilnadu.objects.filter(id=id).values('created_username' ,'vehicleno' ,'chassisno','ownername','mobile' ,'from_state','VehicleType','VehicleClass','recipt_no','PermitType','issuing_authority','txt_seat_cap','txt_sleeper_cap','Extra_seat_cap','ins_validity_input','fitness_valid_input','pucc_validity_input','TaxMode','txt_permit_auth_no','permit_authorization_vali','Greentax','regn_date','districtname','permit_upto_input','cal_tax_from_input','cal_tax_to_input','checkpost_name','txt_permit_no','total_tax_amount','mv_tax','serviceusercharge','welfaretax','permitfree','payment_date','total_amt_text')
+    get_data = add_tamilnadu.objects.filter(id=id).values('created_username' ,'vehicleno' ,'chassisno','ownername','mobile' ,'from_state','VehicleType','VehicleClass','recipt_no','PermitType','issuing_authority','txt_seat_cap','txt_sleeper_cap','Extra_seat_cap','ins_validity_input','fitness_valid_input','pucc_validity_input','TaxMode','txt_permit_auth_no','permit_authorization_vali','Greentax','regn_date','districtname','permit_upto_input','cal_tax_from_input','cal_tax_to_input','checkpost_name','txt_permit_no','total_tax_amount','mv_tax','serviceusercharge','welfaretax','permitfree','create_date','total_amt_text')
     return render(request,'Tamilnadu/TamilNAduRecipt.html',{'data':get_data[0]})
 
 
 def tripura_data(request):
-    created_user = request.session.get('user_name')
+    token = request.COOKIES.get('token')
     vehicle = request.POST.get('vehicle')
     chassis = request.POST.get('chassis')
     owner = request.POST.get('owner')
@@ -761,7 +803,11 @@ def tripura_data(request):
     month = date_month_year[slice(5,-3)]
     year = date_month_year[slice(4)]
     recipt_no = "TR"+str(year)+str(month)+str(date)
-    data = add_tripura(recipt_no = recipt_no,created_user = created_user ,vehicle = vehicle ,chassis = chassis ,owner = owner ,mobileno = mobileno ,statename = statename ,vehicleType = vehicleType ,vehicleClass = vehicleClass ,grossWeight = grossWeight,district = district ,barrier = barrier ,payment_mode = payment_mode ,cal_tax_from_input = cal_tax_from_input ,cal_tax_to_input = cal_tax_to_input ,mv_tax = mv_tax,Service_charge = Service_charge,total_tax_amount = tax_tottal_int ,text_amt  = text_amt,payment_date = payment_date )
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_tripura(recipt_no = recipt_no,created_user = user_uuid ,vehicle = vehicle ,chassis = chassis ,owner = owner ,mobileno = mobileno ,statename = statename ,vehicleType = vehicleType ,vehicleClass = vehicleClass ,grossWeight = grossWeight,district = district ,barrier = barrier ,payment_mode = payment_mode ,cal_tax_from_input = cal_tax_from_input ,cal_tax_to_input = cal_tax_to_input ,mv_tax = mv_tax,Service_charge = Service_charge,total_tax_amount = tax_tottal_int ,text_amt  = text_amt,payment_date = payment_date )
     data.save()
     send_sms(mobileno,cal_tax_from_input,cal_tax_to_input,payment_date,tax_tottal_int,vehicle)
     return redirect('tripura_recipt'+'/'+str(data.id))
@@ -775,7 +821,7 @@ def tripura_recipt(request,id):
     
 
 def uttarpradesh_data(request):
-    created_username =  request.session.get('user_name')
+    token =  request.COOKIES.get('token')
     vehicleno =    request.POST.get('vehicleno').upper()
     chassisno =    request.POST.get('chassisno').upper()
     ownername =    request.POST.get('ownername').upper()
@@ -794,11 +840,14 @@ def uttarpradesh_data(request):
     permit_upto =   request.POST.get('permit_upto').upper()
     permit_no =   request.POST.get('permit_no').upper()
     total_tax_amount =   int(request.POST.get('total_tax_amount'))
-    Weight =   request.POST.get('Weight')
     payment_date = getdatetime()
     total_amt_text = number_to_text(total_tax_amount).upper()
     recipt_no = getrecipt()
-    data = add_uttarpradesh(recipt_no = recipt_no,created_username  = created_username,vehicleno  =   vehicleno,chassisno  =   chassisno,ownername  =   ownername,mobile  =   mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,ServiceType =  ServiceType,TaxMode =  TaxMode,border_entry =  border_entry,tax_from =  tax_from,tax_upto =  tax_upto,PermitType =  PermitType,permit_upto =  permit_upto,permit_no =  permit_no,total_tax_amount =  total_tax_amount,Weight =  Weight,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_uttarpradesh(recipt_no = recipt_no,created_username  = token,vehicleno  =   vehicleno,chassisno  =   chassisno,ownername  =   ownername,mobile  =   mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,ServiceType =  ServiceType,TaxMode =  TaxMode,border_entry =  border_entry,tax_from =  tax_from,tax_upto =  tax_upto,PermitType =  PermitType,permit_upto =  permit_upto,permit_no =  permit_no,total_tax_amount =  total_tax_amount,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -806,18 +855,18 @@ def uttarpradesh_data(request):
 
     
 def uttarpradesh_recipt(request,id):
-    get_data = add_uttarpradesh.objects.filter(id=id).values('recipt_no','created_username','vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','ServiceType','TaxMode','border_entry','tax_from','tax_upto','PermitType','permit_upto','permit_no','total_tax_amount','Weight','payment_date','total_amt_text','payment_date')
+    get_data = add_uttarpradesh.objects.filter(id=id).values('recipt_no','created_username','vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','ServiceType','TaxMode','border_entry','tax_from','tax_upto','PermitType','permit_upto','permit_no','total_tax_amount','payment_date','total_amt_text','payment_date')
     qr_code = qrcode.make(mysite+'/uttarpradesh_scan/'+id)
     id_str = str(id)
     qr_code.save('./media/qrcode/uttarpradesh/'+id_str+'.png')
     return render(request,'Uttarpradesh/uttar-pradesh-pdf.html',{'data':get_data[0],'qr_code':id})
 
 def uttarpradesh_scan(request,id):
-    get_data = add_uttarpradesh.objects.filter(id=id).values('recipt_no','created_username','vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','ServiceType','TaxMode','border_entry','tax_from','tax_upto','PermitType','permit_upto','permit_no','total_tax_amount','Weight','payment_date','total_amt_text')
+    get_data = add_uttarpradesh.objects.filter(id=id).values('recipt_no','created_username','vehicleno','chassisno','ownername','mobile','from_state','VehicleType','VehicleClass','seating_c','txt_sleeper_cap','ServiceType','TaxMode','border_entry','tax_from','tax_upto','PermitType','permit_upto','permit_no','total_tax_amount','payment_date','total_amt_text')
     return render(request,'Uttarpradesh/uttar-pradesh-pdf.html',{'data':get_data[0]})
 
 def uttrakhand_data(request):
-    created_username =   request.session.get('user_name')
+    token =   request.COOKIES.get('token')
     vehicleno =   request.POST.get('vehicleno').upper()
     chassisno =   request.POST.get('chassisno').upper()
     ownername =   request.POST.get('ownername').upper()
@@ -846,7 +895,11 @@ def uttrakhand_data(request):
     recipt_no = getrecipt()
     grand_tottal = int(total_tax_amount) + int(civik_amount) +int(service_amount)
     total_amt_text = number_to_text(grand_tottal).upper()
-    data = add_uttrakhand(grand_tottal=grand_tottal,recipt_no=recipt_no,created_username =   created_username,vehicleno =   vehicleno,chassisno =   chassisno,ownername =   ownername,mobile =   mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,ServiceType =  ServiceType,TaxMode =  TaxMode,border_entry =  border_entry,tax_from =  tax_from,tax_upto =  tax_upto,PermitType =  PermitType,permit_upto =  permit_upto,permit_no =  permit_no,districtname =  districtname,fitdate =  fitdate,permit_from =  permit_from,txt_no_of_weeks =  txt_no_of_weeks,total_tax_amount =  total_tax_amount,service_amount =  service_amount,civik_amount =  civik_amount,payment_date = payment_date,total_amt_text=total_amt_text)
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_uuid = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
+    data = add_uttrakhand(grand_tottal=grand_tottal,recipt_no=recipt_no,created_username =  user_uuid,vehicleno =   vehicleno,chassisno =   chassisno,ownername =   ownername,mobile =   mobile,from_state =  from_state,VehicleType =  VehicleType,VehicleClass =  VehicleClass,seating_c =  seating_c,txt_sleeper_cap =  txt_sleeper_cap,ServiceType =  ServiceType,TaxMode =  TaxMode,border_entry =  border_entry,tax_from =  tax_from,tax_upto =  tax_upto,PermitType =  PermitType,permit_upto =  permit_upto,permit_no =  permit_no,districtname =  districtname,fitdate =  fitdate,permit_from =  permit_from,txt_no_of_weeks =  txt_no_of_weeks,total_tax_amount =  total_tax_amount,service_amount =  service_amount,civik_amount =  civik_amount,payment_date = payment_date,total_amt_text=total_amt_text)
     data.save()
     send_sms(mobile,tax_from,tax_upto,payment_date,total_tax_amount,vehicleno)
     id = data.id
@@ -865,78 +918,89 @@ def uttrakhand_scan(request,id):
     return render(request,'Uttrakhand/uttrakhand-pdf.html',{'data':get_data[0]})
 
 def all_recipt_history(request,statename):
+    token = request.COOKIES.get('token')
+    decoded_payload = jwt.decode(token, secrete, algorithms=["HS256"])
+    username = decoded_payload.get("username")
+    password = decoded_payload.get("password")
+    user_id = user_custom.objects.filter(username = username,password=password).values("user_uuid")[0].get('user_uuid')
     if (statename == "rajasthan"):
-        user_id = request.session.get('user_name')
         if (verify_user(user_id)):
             data = add_rajasthan.objects.filter(user_name=user_id).values("vehicleno","total_tax_amount","chassisno","mobile","from_state","ownername","id")
             return render(request,'Haryana/haryanaview.html',{"data":data,"state_name":statename,"site_url":"rajasthan_recipt"})
         else:
             return redirect('login')
     elif(statename == "gujrat"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_gujrat.objects.filter(created_username=user_id).values("id","vehicleno","total_tax_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"gujrat_recipt"})
     elif(statename == "bihar"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_bihar.objects.filter(created_username=user_id).values("id","vehicle","tax_total","chassis_no","owner_mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"bihar_recipt"})
     elif(statename == "gujrat_odc"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_gujrat_odc.objects.filter(created_user=user_id).values("id","vehicle","total_tax_amount","chassis","mobileno","state_from")
-            return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"gujrat_odc_recipt"})
+            # return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"gujrat_odc_recipt"})
+            return HttpResponse("this site is under devlopment")
     elif(statename == "haryana"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_haryana.objects.filter(created_username=user_id).values("id","vehicleno","total_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"gujrat_recipt"})
     elif(statename == "himachalpradesh"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_himachal.objects.filter(created_username=user_id).values("id","vehicleno","total_tax_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"himachal_recipt"})
     elif(statename == "jharkhand"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_jharkhand.objects.filter(created_username=user_id).values("id","vehicleno","total_tax_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"jharkhand_recipt"})
     elif(statename == "karnatka"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_karnataka.objects.filter(created_username = user_id).values("id","vehicleno","total_tax_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"karnataka_recipt"})
     elif(statename == "madhyapradesh"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_madhyapradesh.objects.filter(created_username=user_id).values("id","vehicleno","total_tax_amount","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"madhyapradesh_recipt"})
     elif(statename == "maharashtra"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_maharashtra.objects.filter(created_username=user_id).values("id","vehicleno","total_tax_amount","chassisno","mobile","from_state")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"maharashtra_recipt"})
     elif(statename == "punjab"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_punjab.objects.filter(user_name=user_id).values("id","vehicleno","chassisno","mobile","from_state","total_amount")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"punjab_recipt"})
     elif(statename == "tamilnadu"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_tamilnadu.objects.filter(created_username=user_id).values("id","vehicleno","chassisno","mobile","from_state","total_tax_amount")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"tamilnadu_recipt"})
     elif(statename == "uttarpradesh"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_uttarpradesh.objects.filter(created_username=user_id).values("id","vehicleno","chassisno","mobile","from_state","total_tax_amount")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"uttarpradesh_recipt"})
     elif(statename == "uttrakhand"):
-        user_id = request.session.get('user_name')
+        
         if (verify_user(user_id)):
             data = add_uttrakhand.objects.filter(created_username=user_id).values("id","vehicleno","chassisno","mobile","from_state","total_tax_amount")
             return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"maharashtra_recipt"})
+    elif(statename == "tripura"):
+        
+        if (verify_user(user_id)):
+            data = add_tripura.objects.filter(created_user=user_id).values("id","vehicle","chassis","mobileno","statename","total_tax_amount")
+            # return render(request,'Haryana/haryanaview.html',{"data":data,"sate_name":statename,"site_url":"maharashtra_recipt"})
+            return HttpResponse("this page is under devlopment")
     else:
         return HttpResponse("invalid state")
     
